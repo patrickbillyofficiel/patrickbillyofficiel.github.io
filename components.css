@@ -1,0 +1,81 @@
+/* components.css : cartes, boutons, listes, etc. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn-primary {
+  background: #0f766e;
+  color: #f9fafb;
+  border-color: #0f766e;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background: #0d4f4a;
+  border-color: #0d4f4a;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #0f766e;
+  border-color: #0f766e;
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus {
+  background: #e0f2f1;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* Cards */
+
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e5e7eb;
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Listes de services */
+
+.service-list {
+  padding-left: 1.2rem;
+}
+
+.service-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Lang blocks */
+
+.lang-block[hidden] {
+  display: none !important;
+}
