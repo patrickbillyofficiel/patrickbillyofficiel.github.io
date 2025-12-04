@@ -1,16 +1,13 @@
-## Hi there 👋
+# Site officiel – Patrick Billy
 
-<!--
-**patrickbillyofficiel/patrickbillyofficiel** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Ce dépôt contient le site officiel de **Patrick Billy** :
 
-Here are some ideas to get you started:
+- Consultant en accessibilité numérique (RGAA/WCAG)
+- Designer inclusif
+- Spécialiste IA appliquée
+- Créateur de Mini-WTD (Work-Test-Demo)
+- Solutions low-tech / offline / intranet
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Le site est une single-page FR / EN / MG avec un simple sélecteur de langue côté client.
+
+Déploiement recommandé via **GitHub Pages**.
