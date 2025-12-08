@@ -1,65 +1,137 @@
-// ===== MODULE VOIX PATRICK BILLY =====
+// =====================
+//  MODULE AUDIO PRO
+//  Patrick Billy
+// =====================
 
-// --- Synthèse vocale (lecture) ---
+// --- Synthèse ---
 const synth = window.speechSynthesis;
+let currentUtter = null;
 
-function readText(text, lang = 'fr-FR') {
-  if (!text) return;
+// --- Mini-player ---
+const player = document.querySelector(".voice-player");
+const btnPause = document.getElementById("vp-pause");
+const btnStop = document.getElementById("vp-stop");
 
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.lang = lang;
-  utter.rate = 1; // vitesse
-  utter.pitch = 1;
-
-  synth.cancel();
-  synth.speak(utter);
-}
-
-document.getElementById("voice-read-btn").addEventListener("click", () => {
-  const activePanel = document.querySelector(".ia-panel:not([hidden])");
-  if (!activePanel) return;
-
-  const text = activePanel.innerText.trim();
-
-  let lang = "fr-FR";
-  if (activePanel.id === "ia-en") lang = "en-US";
-  if (activePanel.id === "ia-mg") lang = "mg-MG"; // fallback automatique → FR
-
-  readText(text, lang);
+btnPause.addEventListener("click", () => {
+  if (synth.speaking && !synth.paused) synth.pause();
+  else synth.resume();
 });
 
-document.getElementById("voice-stop-btn").addEventListener("click", () => {
+btnStop.addEventListener("click", () => {
   synth.cancel();
+  player.hidden = true;
+  clearHighlights();
 });
 
-// --- Reconnaissance vocale (dictée) ---
+// --- Fonction lecture avec suivi phrase par phrase ---
+function speakWithHighlight(text, lang) {
+  clearHighlights();
 
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const sentences = text.match(/[^\.!\?]+[\.!\?]+/g) || [text];
+  let i = 0;
 
-let recognizing = false;
+  function playNext() {
+    if (i >= sentences.length) {
+      player.hidden = true;
+      return;
+    }
 
-document.getElementById("voice-dictate-btn").addEventListener("click", () => {
-  if (!window.SpeechRecognition) {
-    alert("Reconnaissance vocale non supportée sur ce navigateur.");
-    return;
+    const s = sentences[i].trim();
+    highlightSentence(i);
+
+    currentUtter = new SpeechSynthesisUtterance(s);
+    currentUtter.lang = lang;
+    currentUtter.rate = 1;
+
+    currentUtter.onend = () => {
+      i++;
+      playNext();
+    };
+
+    synth.speak(currentUtter);
   }
 
+  player.hidden = false;
+  playNext();
+}
+
+// --- Coloration de la phrase active ---
+function highlightSentence(index) {
+  clearHighlights();
+
+  const panel = document.querySelector(".ia-panel:not([hidden])");
+  if (!panel) return;
+
+  const textNodes = panel.querySelectorAll("p, li, td");
+
+  let pos = 0;
+  textNodes.forEach(node => {
+    const parts = node.innerHTML.split(/(?<=[.!?])/);
+
+    parts = parts.map((p, idx) => {
+      if (pos === index) return `<span class="highlight">${p}</span>`;
+      pos++;
+      return p;
+    });
+
+    node.innerHTML = parts.join("");
+  });
+}
+
+function clearHighlights() {
+  document.querySelectorAll(".highlight").forEach(el => {
+    el.classList.remove("highlight");
+  });
+}
+
+// --- Lecture bouton "Lire" ---
+document.getElementById("voice-read-btn").addEventListener("click", () => {
+  const panel = document.querySelector(".ia-panel:not([hidden])");
+  if (!panel) return;
+
+  const text = panel.innerText.trim();
+  let lang = "fr-FR";
+  if (panel.id === "ia-en") lang = "en-US";
+  if (panel.id === "ia-mg") lang = "fr-FR";
+
+  synth.cancel();
+  speakWithHighlight(text, lang);
+});
+
+// --- Stop ---
+document.getElementById("voice-stop-btn").addEventListener("click", () => {
+  synth.cancel();
+  player.hidden = true;
+  clearHighlights();
+});
+
+// --- DICTÉE CONTINUE ---
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+if (window.SpeechRecognition) {
   const recog = new SpeechRecognition();
   recog.lang = "fr-FR";
-  recog.interimResults = false;
+  recog.interimResults = true;
+  recog.continuous = true;
 
-  recog.start();
-  recognizing = true;
+  let buffer = "";
 
-  document.getElementById("voice-dictate-btn").textContent = "🎤 En cours...";
+  document.getElementById("micro-btn").addEventListener("click", () => {
+    buffer = "";
+    recog.start();
+    document.getElementById("micro-btn").textContent = "🎤…";
+  });
 
   recog.onresult = (event) => {
-    const result = event.results[0][0].transcript;
-    document.getElementById("job-offer").value += "\n" + result;
+    let transcript = "";
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      transcript += event.results[i][0].transcript + " ";
+    }
+    buffer = transcript;
+    document.getElementById("job-offer").value = buffer;
   };
 
   recog.onend = () => {
-    recognizing = false;
-    document.getElementById("voice-dictate-btn").textContent = "🎤 Dicter une offre";
+    document.getElementById("micro-btn").textContent = "🎤";
   };
-});
+}
