@@ -79,3 +79,104 @@
 .lang-block[hidden] {
   display: none !important;
 }
+
+/* Cartes de compétences avec niveaux */
+.competence-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .competence-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .competence-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* On réutilise .card existant et on ajoute un style de badge */
+.competence-card {
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.competence-level {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: #0f766e;     /* même vert que tes boutons */
+  color: #f9fafb;
+  margin-top: 0.25rem;
+}
+
+/* Petit style sur la ligne de titre + niveau */
+.competence-card h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Section blog / actualités */
+.blog-section .intro {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  font-size: 0.95rem;
+}
+
+/* grille des cartes de blog */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* on repart de .card pour garder le style du site */
+.blog-card {
+  /* .card gère déjà fond, bord, ombre */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+}
+
+.blog-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+.blog-card p {
+  margin-bottom: 0.6rem;
+  font-size: 0.92rem;
+}
+
+.blog-link {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
