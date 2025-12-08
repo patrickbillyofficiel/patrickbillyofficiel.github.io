@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Systèmes d’exploitation · Patrick Billy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Compétences systèmes de Patrick Billy : Windows, Android, Linux, macOS, iOS, ChromeOS.">
+
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+
+<body>
+  <a href="#main" class="skiplink">Aller au contenu principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="site-brand">
+        <span class="site-title">Patrick Billy</span>
+        <span class="site-subtitle">Accessibilité · Inclusion · IA appliquée</span>
+      </div>
+
+      <nav class="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html#hero">Accueil</a></li>
+          <li><a href="../index.html#bio">Bio</a></li>
+          <li><a href="../index.html#expertises">Expertises</a></li>
+          <li><a href="competences.html">Compétences</a></li>
+          <li><a href="rgaa.html">RGAA</a></li>
+          <li><a href="systemes.html" aria-current="page">Systèmes</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switch" aria-label="Choix de la langue">
+        <button type="button" data-lang="fr" class="is-active">FR</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="mg">MG</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="section">
+      <div class="container">
+        <h1>Compétences systèmes &amp; environnements</h1>
+
+        <div class="lang-block lang-fr">
+          <p>
+            Je travaille avec plusieurs systèmes d’exploitation, avec un focus fort sur
+            <strong>Windows</strong> et les environnements <strong>offline</strong>.
+          </p>
+
+          <div class="competence-grid">
+
+            <article class="card competence-card">
+              <h3>
+                Windows 10 / 11
+                <span class="competence-level">★★★★★ Expert</span>
+              </h3>
+              <ul>
+                <li>Scripts PowerShell pour packaging, automatisation, sauvegardes.</li>
+                <li>Déploiement d’outils sur clé USB et serveurs locaux.</li>
+                <li>Réglages d’accessibilité, sécurité locale, comptes utilisateurs.</li>
+              </ul>
+            </article>
+
+            <article class="card competence-card">
+              <h3>
+                Android
+                <span class="competence-level">★★★★☆ Avancé</span>
+              </h3>
+              <ul>
+                <li>Déploiement d’APK en offline.</li>
+                <li>Optimisation pour réseaux faibles (Madagascar, terrain).</li>
+                <li>Paramétrage simplifié pour utilisateurs fragiles.</li>
+              </ul>
+            </article>
+
+            <article class="card competence-card">
+              <h3>
+                Linux (Ubuntu, Debian, Mint)
+                <span class="competence-level">★★★☆☆ Confirmé</span>
+              </h3>
+              <ul>
+                <li>Installation et configuration de base.</li>
+                <li>Déploiement de sites statiques et outils internes.</li>
+                <li>Usage du terminal et scripts simples.</li>
+              </ul>
+            </article>
+
+            <article class="card competence-card">
+              <h3>
+                macOS
+                <span class="competence-level">★★☆☆☆ Intermédiaire</span>
+              </h3>
+              <ul>
+                <li>Usage pro pour graphisme et web.</li>
+                <li>Travail avec agences et dev sur Mac.</li>
+              </ul>
+            </article>
+
+            <article class="card competence-card">
+              <h3>
+                iOS (iPhone / iPad)
+                <span class="competence-level">★★☆☆☆ Intermédiaire</span>
+              </h3>
+              <ul>
+                <li>Tests d’accessibilité web sur Safari.</li>
+                <li>Paramétrage basique d’options d’accessibilité.</li>
+              </ul>
+            </article>
+
+            <article class="card competence-card">
+              <h3>
+                ChromeOS
+                <span class="competence-level">★☆☆☆☆ Débutant utile</span>
+              </h3>
+              <ul>
+                <li>Usage de base pour contexte scolaire.</li>
+                <li>Tests de compatibilité de sites légers.</li>
+              </ul>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Patrick Billy · Accessibilité · Inclusion · IA appliquée.</p>
+      <p><a href="../index.html#hero">Retour à l’accueil</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/lang-switch.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
