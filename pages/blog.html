@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Blog & Actualités · Patrick Billy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+        content="Blog et actualités de Patrick Billy : accessibilité, inclusion, IA appliquée, Mini-WTD, LDL.">
+
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+</head>
+
+<body>
+  <a href="#main" class="skiplink">Aller au contenu principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="site-brand">
+        <span class="site-title">Patrick Billy</span>
+        <span class="site-subtitle">Accessibilité · Inclusion · IA appliquée</span>
+      </div>
+
+      <nav class="site-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html#hero">Accueil</a></li>
+          <li><a href="../index.html#bio">Bio</a></li>
+          <li><a href="../index.html#expertises">Expertises</a></li>
+          <li><a href="competences.html">Compétences</a></li>
+          <li><a href="rgaa.html">RGAA</a></li>
+          <li><a href="systemes.html">Systèmes</a></li>
+          <li><a href="blog.html" aria-current="page">Blog</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="lang-switch" aria-label="Choix de la langue">
+        <button type="button" data-lang="fr" class="is-active">FR</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="mg">MG</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="section blog-section">
+      <div class="container">
+        <h1>Blog &amp; actualités</h1>
+
+        <p class="intro">
+          Quelques dossiers, coups de gueule et retours d’expérience autour de l’accessibilité,
+          de l’IA appliquée, du handicap et de la cuisine LDL.
+        </p>
+
+        <div class="blog-grid">
+
+          <article class="card blog-card">
+            <h3>Mini-WTD : tester l’inclusion autrement</h3>
+            <p>
+              Pourquoi j’ai créé Mini-WTD, comment il est utilisé sur le terrain, et ce que
+              ça change pour les personnes en situation de handicap et les employeurs.
+            </p>
+            <a href="../index.html#mini-wtd" class="blog-link">Voir la présentation Mini-WTD →</a>
+          </article>
+
+          <article class="card blog-card">
+            <h3>Accessibilité++ : au-delà du RGAA</h3>
+            <p>
+              Le RGAA est une base. Accessibilité++ ajoute la voix, l’IA et la réalité des
+              publics fragiles. Moins de théorie, plus d’outils concrets.
+            </p>
+            <a href="rgaa.html" class="blog-link">Voir mes compétences RGAA →</a>
+          </article>
+
+          <article class="card blog-card">
+            <h3>IA &amp; handicap : arrêter le blabla</h3>
+            <p>
+              Comment l’IA peut réellement aider (secrétaire scolaire, prompts adaptés, comparateurs),
+              et où il faut mettre des garde-fous.
+            </p>
+            <a href="../index.html#services" class="blog-link">Voir mes services IA →</a>
+          </article>
+
+          <article class="card blog-card">
+            <h3>Cuisine LDL : la santé sans le mépris</h3>
+            <p>
+              Manger mieux quand on n’a pas un budget de restaurant étoilé. Mes principes
+              et mes recettes LDL pour le quotidien.
+            </p>
+            <a href="#!" class="blog-link">Bientôt : page dédiée LDL →</a>
+          </article>
+
+          <article class="card blog-card">
+            <h3>Projets France–Madagascar</h3>
+            <p>
+              Pourquoi je construis des solutions low-tech et offline, et comment je les pense
+              à la fois pour la France et pour Madagascar.
+            </p>
+            <a href="../index.html#international" class="blog-link">Voir la section International →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> Patrick Billy · Accessibilité · Inclusion · IA appliquée.</p>
+      <p><a href="../index.html#hero">Retour à l’accueil</a></p>
+    </div>
+  </footer>
+
+  <script src="../assets/js/lang-switch.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
