@@ -1,11 +1,106 @@
-<!-- variables remplacées -->
-{{lang}} → fr
-{{title}} → Accessibilité : le terrain avant la conformité
-{{description}} → Réflexion terrain sur les limites de la conformité RGAA
-{{date}} → Février 2026
-{{author}} → Patrick Billy
-{{intro}} → La conformité ne garantit pas l’usage réel.
-{{content}} → <p>Article complet ici…</p>
-{{react_label}} → Réagir à cet article
-{{react_link}} → /pages/debats/
-{{year}} → 2026
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Accessibilité : le terrain avant la conformité · Patrick Billy</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Réflexion terrain sur les limites de la conformité RGAA : pourquoi l’usage réel doit guider les décisions d’accessibilité.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/layout.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Aller au contenu principal</a>
+
+<header class="site-header" role="banner">
+  <nav aria-label="Navigation principale">
+    <ul>
+      <li><a href="/index.html">Accueil</a></li>
+      <li><a href="/portfolio/index.html">Portfolio</a></li>
+      <li><a href="/debats/index.html" aria-current="page">Débats</a></li>
+      <li><a href="/portfolio/contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" class="section" tabindex="-1">
+  <article class="container" aria-labelledby="titre-article">
+    <header>
+      <p class="muted"><time datetime="2026-03-03">3 mars 2026</time> · Terrain · Accessibilité vécue</p>
+      <h1 id="titre-article">Accessibilité : le terrain avant la conformité</h1>
+      <p class="lead">
+        La conformité est utile. Mais sans tests d’usage réel, on risque de produire des interfaces “valides”
+        qui épuisent les personnes au quotidien.
+      </p>
+    </header>
+
+    <section aria-labelledby="constat">
+      <h2 id="constat">Constat terrain</h2>
+      <p>
+        Dans des audits récents, plusieurs parcours passaient les critères techniques tout en restant fragiles en contexte réel :
+        surcharge cognitive, étapes trop longues, erreurs mal récupérées, vocabulaire trop abstrait.
+      </p>
+      <p>
+        Résultat : les personnes finissent par contourner l’outil, demandent de l’aide, ou abandonnent.
+        La conformité est cochée, l’autonomie ne l’est pas.
+      </p>
+    </section>
+
+    <section aria-labelledby="limites">
+      <h2 id="limites">Ce que la conformité ne couvre pas toujours</h2>
+      <ul>
+        <li>La fatigue liée aux parcours longs et répétitifs.</li>
+        <li>La charge mentale quand chaque écran demande une décision différente.</li>
+        <li>Les environnements dégradés (bruit, stress, petit écran, connexion instable).</li>
+        <li>Les usages assistés (aidant, professionnel, proche) rarement testés.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="pistes">
+      <h2 id="pistes">Pistes concrètes à intégrer</h2>
+      <ol>
+        <li><strong>Tester tôt en situation réelle</strong> avec des profils variés, pas uniquement en recette finale.</li>
+        <li><strong>Mesurer l’effort</strong> (temps, erreurs, retours arrière), pas seulement le succès final.</li>
+        <li><strong>Documenter les irritants</strong> dans un backlog d’amélioration continue.</li>
+        <li><strong>Arbitrer par l’usage</strong> : quand un choix “conforme” bloque, on adapte.</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="conclusion">
+      <h2 id="conclusion">Conclusion</h2>
+      <p>
+        Le cadre RGAA reste indispensable. Mais il devrait être considéré comme un socle,
+        pas comme une preuve d’accessibilité vécue.
+      </p>
+      <p>
+        L’objectif final n’est pas la conformité : c’est l’autonomie réelle des personnes,
+        dans leurs contraintes de vie, de temps et d’attention.
+      </p>
+    </section>
+
+    <hr class="hr">
+
+    <section class="callout" aria-labelledby="reagir">
+      <h2 id="reagir">Réagir à cet article</h2>
+      <p class="muted">Accord, désaccord, retour d’expérience : la discussion est ouverte.</p>
+      <p>
+        <a class="button" href="mailto:elanpourtous49@gmail.com?subject=Réaction%20–%20Accessibilité%20:%20le%20terrain%20avant%20la%20conformité">
+          Répondre par email
+        </a>
+        <a class="button button-secondary" href="/debats/index.html">Voir les autres débats</a>
+      </p>
+    </section>
+  </article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <p>© 2026 Patrick Billy — Débats & analyses</p>
+</footer>
+
+</body>
+</html>
