@@ -1,0 +1,279 @@
+/* Demande de devis Élan pour Tous : formulaire, récapitulatif et impression */
+
+.quote-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(19rem, .85fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.quote-form,
+.quote-summary {
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid #c9d9e8;
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: 0 .7rem 2rem rgba(16, 42, 67, .08);
+}
+
+.quote-form fieldset {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  border: 0;
+}
+
+.quote-form legend {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: .55rem;
+  border-bottom: 2px solid #dbeeff;
+  color: #102a43;
+  font-size: 1.15rem;
+  font-weight: 850;
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.quote-field {
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+.quote-field-full {
+  grid-column: 1 / -1;
+}
+
+.quote-field label,
+.quote-choice-title {
+  color: #102a43;
+  font-weight: 750;
+}
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+  width: 100%;
+  min-height: 3rem;
+  padding: .72rem .78rem;
+  border: 1px solid #9fb8cc;
+  border-radius: .7rem;
+  background: #fff;
+  color: #102a43;
+  font: inherit;
+}
+
+.quote-field textarea {
+  min-height: 7rem;
+  resize: vertical;
+}
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus,
+.quote-choice input:focus-visible,
+.quote-actions button:focus-visible,
+.quote-actions a:focus-visible {
+  outline: 4px solid #ffbf47;
+  outline-offset: 3px;
+}
+
+.quote-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .7rem;
+  margin-top: .55rem;
+}
+
+.quote-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: .55rem;
+  padding: .7rem;
+  border: 1px solid #c9d9e8;
+  border-radius: .75rem;
+  background: #f7fbfe;
+}
+
+.quote-choice input {
+  width: 1.15rem;
+  height: 1.15rem;
+  margin-top: .15rem;
+  flex: 0 0 auto;
+}
+
+.quote-help,
+.quote-required {
+  margin: .35rem 0 0;
+  color: #486581;
+  font-size: .9rem;
+}
+
+.quote-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.2rem;
+}
+
+.quote-actions button,
+.quote-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: .75rem 1rem;
+  border: 2px solid #0b5cad;
+  border-radius: .8rem;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.quote-primary {
+  color: #fff;
+  background: #0b5cad;
+}
+
+.quote-secondary {
+  color: #0b5cad;
+  background: #fff;
+}
+
+.quote-summary {
+  position: sticky;
+  top: 6rem;
+}
+
+.quote-summary h2 {
+  margin-top: 0;
+}
+
+.quote-document {
+  margin-top: 1rem;
+  padding: 1.2rem;
+  border: 1px solid #c9d9e8;
+  border-radius: .9rem;
+  background: #fbfdff;
+}
+
+.quote-document-header {
+  padding-bottom: .8rem;
+  border-bottom: 2px solid #dbeeff;
+}
+
+.quote-document-header p,
+.quote-document p {
+  margin-bottom: .45rem;
+}
+
+.quote-document h3 {
+  margin: 1.1rem 0 .45rem;
+  font-size: 1rem;
+}
+
+.quote-document ul {
+  margin: .35rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.quote-placeholder {
+  color: #6b7f91;
+  font-style: italic;
+}
+
+.quote-notice {
+  margin-top: 1rem;
+  padding: .9rem 1rem;
+  border-left: .35rem solid #c77600;
+  border-radius: .35rem;
+  background: #fff6df;
+  color: #5b3b00;
+}
+
+.quote-status {
+  margin-top: 1rem;
+  padding: .8rem 1rem;
+  border-radius: .6rem;
+  background: #e8f5ee;
+  color: #174f35;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .quote-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 620px) {
+  .quote-grid,
+  .quote-options {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-actions,
+  .quote-actions button,
+  .quote-actions a {
+    width: 100%;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .site-header,
+  .inner-hero,
+  .quote-form,
+  .quote-summary > h2,
+  .quote-summary > p,
+  .quote-actions,
+  .quote-notice,
+  .quote-status,
+  .site-footer,
+  .skip-link,
+  .no-print {
+    display: none !important;
+  }
+
+  .inner-section,
+  .inner-wrap,
+  .quote-layout,
+  .quote-summary {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .quote-document {
+    border: 0;
+    padding: 0;
+    color: #000;
+    background: #fff;
+  }
+
+  .quote-document a {
+    color: #000;
+    text-decoration: none;
+  }
+}
