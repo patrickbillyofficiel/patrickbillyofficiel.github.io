@@ -1,4 +1,11 @@
-/* base.css : reset léger + typographie + couleurs globales */
+/* Fondations communes — accessibilité RGAA 4.1.2, typographie et contrastes */
+
+:root {
+  --a11y-focus: #ffbf47;
+  --a11y-text: #111827;
+  --a11y-link: #075985;
+  --a11y-surface: #ffffff;
+}
 
 *,
 *::before,
@@ -8,50 +15,158 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
+  min-height: 100vh;
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1rem;
   line-height: 1.6;
-  color: #111827;
+  color: var(--a11y-text);
   background-color: #f9fafb;
+  overflow-wrap: anywhere;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+main,
+header,
+footer,
+nav,
+section,
+article,
+aside {
   display: block;
 }
 
+img,
+picture,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+img {
+  display: block;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+  font: inherit;
+  line-height: 1.4;
+}
+
+button,
+select,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  min-height: 2.75rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+fieldset {
+  min-width: 0;
+}
+
+legend,
+label {
+  font-weight: 700;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Les liens restent identifiables sans dépendre uniquement de la couleur. */
 a {
-  color: #0f766e;
+  color: var(--a11y-link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.16em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.16em;
+}
+
+a:visited {
+  color: #6b21a8;
+}
+
+a[aria-current="page"] {
+  font-weight: 800;
+}
+
+/* Focus clavier visible sur tous les éléments interactifs. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 4px solid var(--a11y-focus);
+  outline-offset: 3px;
+  border-radius: 0.2rem;
+}
+
+/* Deux noms historiques sont pris en charge sur l’ensemble du site. */
+.skip-link,
+.skiplink {
+  position: fixed;
+  left: 1rem;
+  top: -8rem;
+  z-index: 10000;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1rem;
+  overflow: visible;
+  color: #ffffff;
+  background: #111827;
+  border: 2px solid #ffffff;
+  border-radius: 0.5rem;
+  font-weight: 800;
   text-decoration: none;
 }
 
-a:hover,
-a:focus {
-  text-decoration: underline;
+.skip-link:focus,
+.skip-link:focus-visible,
+.skiplink:focus,
+.skiplink:focus-visible {
+  top: 1rem;
+  color: #ffffff;
 }
 
-.skiplink {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  padding: 0.5rem 1rem;
-  background: #111827;
-  color: #f9fafb;
-  z-index: 100;
+.visually-hidden,
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
-.skiplink:focus {
-  left: 0.5rem;
-  top: 0.5rem;
-}
-
-h1, h2, h3 {
-  color: #111827;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--a11y-text);
   line-height: 1.2;
+  overflow-wrap: normal;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 h2 {
@@ -63,7 +178,45 @@ p {
   margin-bottom: 0.75rem;
 }
 
-/* Contraste des boutons de la nouvelle page d’accueil */
+ul,
+ol {
+  padding-inline-start: 1.4rem;
+}
+
+li + li {
+  margin-top: 0.25rem;
+}
+
+blockquote {
+  margin-inline: 0;
+  padding-inline-start: 1rem;
+  border-inline-start: 0.3rem solid #64748b;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.65rem;
+  border: 1px solid #94a3b8;
+  text-align: start;
+  vertical-align: top;
+}
+
+caption {
+  margin-bottom: 0.6rem;
+  font-weight: 800;
+  text-align: start;
+}
+
+:target {
+  scroll-margin-top: 7rem;
+}
+
+/* Contraste des boutons de la page d’accueil. */
 .home-page .home-section .home-button-primary {
   color: #ffffff;
   background: #0b5cad;
@@ -82,4 +235,30 @@ p {
   color: #073b72;
   background: #ffffff;
   border-color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid CanvasText;
+  }
+
+  .skip-link,
+  .skiplink {
+    border-color: CanvasText;
+  }
 }
