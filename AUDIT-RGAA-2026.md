@@ -11,12 +11,15 @@ Un audit exhaustif et représentatif des 106 critères du RGAA 4.1.2 n’a pas e
 ## Périmètre prioritaire contrôlé
 
 - page d’accueil ;
+- pages d’accueil française, anglaise, espagnole, allemande et malagasy ;
 - présentation du projet ;
 - catalogue des formations ;
 - tarifs et formats ;
 - demande de devis ;
 - contact ;
-- page RGAA ;
+- Bio et Compétences ;
+- comparateur accessible d’offre et de profil ;
+- page RGAA et méthode d’accessibilité vécue ;
 - déclaration d’accessibilité ;
 - page 404 ;
 - feuilles de style communes et portfolio ;
@@ -29,6 +32,7 @@ Un audit exhaustif et représentatif des 106 critères du RGAA 4.1.2 n’a pas e
 - liens d’évitement harmonisés pour les classes `skip-link` et `skiplink` ;
 - focus visible sur les liens, boutons, champs, listes déroulantes et éléments avec `tabindex` ;
 - menu mobile avec `aria-expanded`, `aria-controls` et fermeture par la touche Échap ;
+- choix de langue conservé sur petit écran ;
 - cibles interactives agrandies ;
 - repères `aria-current="page"` normalisés.
 
@@ -36,6 +40,7 @@ Un audit exhaustif et représentatif des 106 critères du RGAA 4.1.2 n’a pas e
 
 - liens identifiables sans dépendre uniquement de la couleur ;
 - contrastes renforcés dans les thèmes clair et sombre ;
+- couleurs des liens visités sécurisées sur les boutons et bandeaux sombres ;
 - prise en compte de `prefers-reduced-motion` ;
 - prise en compte du mode de couleurs forcées ;
 - amélioration du redimensionnement du texte et du retour à la ligne ;
@@ -44,19 +49,26 @@ Un audit exhaustif et représentatif des 106 critères du RGAA 4.1.2 n’a pas e
 ### Structure et contenus
 
 - page d’accueil simplifiée et structurée ;
+- pages de langue harmonisées avec `lang` et `hreflang` ;
+- pages Bio et Compétences remises au gabarit actuel ;
+- auto-évaluations graphiques en étoiles retirées de la page Compétences ;
 - page RGAA réécrite selon la version 4.1.2 ;
 - expressions « RGAA+++++ » ou « RGAA***** » retirées des pages principales ou présentées comme non officielles ;
 - déclaration d’accessibilité publiée avec un statut honnête ;
 - page 404 réécrite ;
 - informations de langue renforcées sur les liens multilingues.
 
-### Formulaires
+### Formulaires et scripts
 
 - champs associés à des libellés visibles ;
 - groupes de champs structurés avec `fieldset` et `legend` ;
 - champs obligatoires signalés ;
 - messages de statut avec région en direct ;
-- aucune transmission automatique des données sans action explicite de l’utilisateur.
+- aucune transmission automatique des données sans action explicite de l’utilisateur ;
+- comparateur de CV remplacé par une démonstration locale fonctionnelle ;
+- tableau de résultat doté d’une légende, d’en-têtes et de cellules de ligne ;
+- absence de score automatique ou de décision de recrutement ;
+- scripts de navigation et de langue manquants ou incohérents corrigés.
 
 ## Contrôle automatique
 
@@ -74,7 +86,7 @@ Les outils automatiques ne couvrent qu’une partie des critères. Ils ne vérif
 
 ## Travaux restant à réaliser
 
-1. Inventorier toutes les anciennes pages et les versions multilingues.
+1. Finaliser l’inventaire des pages historiques, débats, projets et doublons multilingues.
 2. Corriger ou retirer les gabarits obsolètes et les liens relatifs cassés.
 3. Vérifier chaque image selon sa fonction réelle.
 4. Contrôler tous les liens ouvrant une nouvelle fenêtre.
@@ -85,12 +97,14 @@ Les outils automatiques ne couvrent qu’une partie des critères. Ils ne vérif
 9. Constituer un échantillon représentatif selon la méthode RGAA.
 10. Calculer le taux réel et mettre à jour la déclaration.
 
-## Pages de référence
+## Pages et fichiers de référence
 
 - `/pages/accessibilite.html` : déclaration d’accessibilité ;
 - `/pages/rgaa.html` : présentation de la méthode RGAA ;
 - `/pages/methode-rgaa-plus-plus-plus-plus-plus.html` : tests d’usage complémentaires ;
-- `/.pa11yci.json` : échantillon des tests automatisés.
+- `/pages/cv-ia.html` : démonstration interactive accessible ;
+- `/.pa11yci.json` : échantillon des tests automatisés ;
+- `/.github/workflows/accessibility.yml` : contrôle continu.
 
 ## Contact accessibilité
 
