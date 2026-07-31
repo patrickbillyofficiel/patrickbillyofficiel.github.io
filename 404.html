@@ -1,43 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
   <meta charset="utf-8" />
-  <title>Page introuvable · Patrick Billy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Page introuvable – Élan pour Tous</title>
+  <meta name="robots" content="noindex,follow" />
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/layout.css" />
   <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/inner-pages.css" />
 </head>
-<body>
-<a href="#main" class="skip-link">Aller au contenu principal</a>
-<header class="site-header" role="banner">
-  <nav class="nav" aria-label="Navigation principale">
-    <ul class="nav-main">
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/bios/bio-fr.html">Bio</a></li>
-      <li><a href="/pages/competences.html">Compétences</a></li>
-      <li><a href="/portfolio/index.html">Portfolio</a></li>
-      <li><a href="/pages/rgaa.html">RGAA+++++</a></li>
-      <li><a href="/portfolio/contact.html">Contact</a></li>
-    </ul>
-
-    <ul class="nav-lang" aria-label="Langues">
-      <li><a href="/" lang="fr">FR</a></li>
-      <li><a href="/lang/en/index.html" lang="en">EN</a></li>
-      <li><a href="/lang/es/index.html" lang="es">ES</a></li>
-      <li><a href="/lang/de/index.html" lang="de">DE</a></li>
-      <li><a href="/lang/mg/index.html" lang="mg">MG</a></li>
-    </ul>
-  </nav>
-</header>
-<main id="main">
-  <section>
-    <h1>Page introuvable</h1>
-    <p>La page demandée n’existe pas (ou a été déplacée).</p>
-    <p><a class="button" href="/">Retour à l’accueil</a></p>
-  </section>
-</main>
-<footer role="contentinfo"><p>© 2026 Patrick Billy</p></footer>
+<body class="inner-page">
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+  <header class="site-header" role="banner">
+    <nav class="inner-nav" aria-label="Navigation principale">
+      <a class="inner-brand" href="/"><strong>Élan pour Tous</strong><span>IA inclusive · Patrick Billy</span></a>
+      <ul class="inner-menu">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/pages/formations.html">Formations</a></li>
+        <li><a href="/pages/rgaa.html">RGAA</a></li>
+        <li><a href="/pages/accessibilite.html">Accessibilité</a></li>
+        <li><a href="/portfolio/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="inner-section">
+      <div class="inner-wrap">
+        <div class="inner-callout">
+          <p class="inner-tag">Erreur 404</p>
+          <h1>Page introuvable</h1>
+          <p>La page demandée n’existe plus, a été déplacée ou son adresse contient une erreur.</p>
+          <div class="inner-actions">
+            <a class="inner-button inner-button-primary" href="/">Retour à l’accueil</a>
+            <a class="inner-button inner-button-secondary" href="/portfolio/contact.html">Signaler un lien cassé</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer" role="contentinfo"><div class="inner-wrap inner-footer"><p>© Patrick Billy — Élan pour Tous</p><p><a href="/pages/accessibilite.html">Accessibilité : non conforme</a></p></div></footer>
 </body>
 </html>
