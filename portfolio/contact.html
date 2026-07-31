@@ -1,128 +1,302 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Contact · Portfolio Patrick Billy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact : email, LinkedIn, informations utiles pour cadrer une mission accessibilité, inclusion, IA appliquée, low-tech/offline.">
-
-  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact et demande de formation – Élan pour Tous</title>
+  <meta name="description" content="Contacter Élan pour Tous pour demander une formation, proposer un partenariat, présenter un besoin d’accessibilité ou organiser un groupe pilote." />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/inner-pages.css" />
+  <link rel="stylesheet" href="../assets/css/contact.css" />
 </head>
-
-<body>
-  <a href="#main" class="skiplink">Aller au contenu principal</a>
+<body class="inner-page">
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
 
   <header class="site-header" role="banner">
-  <nav class="nav" aria-label="Navigation principale">
-    <ul class="nav-main">
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/bios/bio-fr.html">Bio</a></li>
-      <li><a href="pages/competences.html">Compétences</a></li>
-      <li><a href="/portfolio/index.html">Portfolio</a></li>
-      <li><a href="pages/rgaa.html">RGAA+++++</a></li>
-      <li><a href="/portfolio/contact.html">Contact</a></li>
-    </ul>
+    <nav class="inner-nav" aria-label="Navigation principale">
+      <a class="inner-brand" href="../index.html">
+        <strong>Élan pour Tous</strong>
+        <span>IA inclusive · Patrick Billy</span>
+      </a>
+      <ul class="inner-menu">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="../pages/elan-pour-tous.html">Le projet</a></li>
+        <li><a href="../pages/formations.html">Formations</a></li>
+        <li><a href="../pages/reaction-institutions-etat.html">Analyse institutionnelle</a></li>
+        <li><a href="./index.html">Portfolio</a></li>
+        <li><a href="./contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <ul class="nav-lang" aria-label="Langues">
-      <li><a href="lang/fr/index.html" lang="fr">FR</a></li>
-      <li><a href="lang/en/index.html" lang="en">EN</a></li>
-      <li><a href="lang/es/index.html" lang="es">ES</a></li>
-      <li><a href="lang/de/index.html" lang="de">DE</a></li>
-      <li><a href="lang/mg/index.html" lang="mg">MG</a></li>
-    </ul>
-  </nav>
-</header>
-
-  <main id="main" class="section" tabindex="-1">
-    <div class="container">
-      <h1>Contact</h1>
-      <p class="muted">Pour aller vite : dis-moi ton public, tes contraintes, et ce que tu veux améliorer.</p>
-
-      <div class="grid grid-2">
-        <section class="card" aria-labelledby="coord-title">
-          <div class="card-inner">
-            <h2 class="h3" id="coord-title">Coordonnées</h2>
-            <ul>
-              <li>Email : <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a></li>
-              <li>
-                LinkedIn :
-                <a href="https://www.linkedin.com/in/patrickbilly"
-                   target="_blank"
-                   rel="noopener noreferrer">/in/patrickbilly</a>
-              </li>
-            </ul>
-            <p class="note small">Je réponds mieux aux demandes qui décrivent le contexte. Sinon, je devine… et je déteste deviner.</p>
+  <main id="main">
+    <section class="inner-hero" aria-labelledby="contact-title">
+      <div class="inner-wrap inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Premier échange sans engagement</p>
+          <h1 id="contact-title">Présentez votre besoin à Élan pour Tous</h1>
+          <p class="inner-lead">
+            Demande de formation, partenariat, groupe pilote, accessibilité ou accompagnement numérique :
+            décrivez le contexte et les personnes concernées afin de préparer une réponse adaptée.
+          </p>
+          <div class="inner-actions">
+            <a class="inner-button inner-button-primary" href="#demande">Remplir la demande</a>
+            <a class="inner-button inner-button-secondary" href="mailto:elanpourtous49@gmail.com">Écrire directement</a>
           </div>
-        </section>
-
-        <section class="card" aria-labelledby="cadrage-title">
-          <div class="card-inner">
-            <h2 class="h3" id="cadrage-title">Pour cadrer ta demande</h2>
-            <ul>
-              <li><strong>Public</strong> (qui utilise ?)</li>
-              <li><strong>Contexte</strong> (terrain / bureau / formation / RH…)</li>
-              <li><strong>Contraintes</strong> (offline, matériel, délai, accessibilité…)</li>
-              <li><strong>Objectif</strong> (réduire erreurs, rendre accessible, simplifier…)</li>
-              <li><strong>Deadline</strong> (si tu en as une)</li>
-            </ul>
-          </div>
-        </section>
-      </div>
-
-      <hr class="hr" aria-hidden="true">
-
-      <section class="callout" aria-labelledby="msg-title">
-        <h2 id="msg-title">Message type (copier-coller)</h2>
-
-        <p class="muted" id="template-text">
-          Bonjour Patrick, je cherche [audit/corrections/module offline/assistant IA] pour [contexte].
-          Public : […]. Contraintes : […]. Deadline : […]. Liens / accès : […].
-        </p>
-
-        <div class="actions">
-          <a class="btn btn-primary"
-             href="mailto:elanpourtous49@gmail.com?subject=Demande%20-%20Portfolio%20Patrick%20Billy">
-            Envoyer un email
-          </a>
-
-          <button class="btn btn-outline" type="button" id="copy-btn" aria-describedby="copy-status">
-            Copier le message
-          </button>
-
-          <a class="btn btn-outline" href="projets.html">Voir des exemples</a>
         </div>
 
-        <p id="copy-status" class="note small" aria-live="polite" style="margin-top:10px;"></p>
-      </section>
-
-      <div class="actions" style="margin-top:24px;">
-        <a class="btn btn-outline" href="../index.html">Retour au site officiel</a>
+        <aside class="inner-summary" aria-labelledby="contact-summary-title">
+          <h2 id="contact-summary-title">Pour préparer l’échange</h2>
+          <ul>
+            <li>Le public ou l’équipe concernée.</li>
+            <li>Le besoin principal et le résultat attendu.</li>
+            <li>Les contraintes d’accessibilité ou de matériel.</li>
+            <li>Le lieu, le format et la période envisagés.</li>
+          </ul>
+        </aside>
       </div>
-    </div>
+    </section>
+
+    <section id="demande" class="inner-section" aria-labelledby="request-title">
+      <div class="inner-wrap">
+        <div class="inner-heading">
+          <p class="inner-tag">Formulaire de contact</p>
+          <h2 id="request-title">Demander une formation ou proposer un partenariat</h2>
+          <p>
+            Le formulaire prépare un courriel dans votre messagerie. Aucune information n’est enregistrée
+            ou transmise à un serveur par ce site.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <form id="contact-form" class="contact-form">
+            <p class="required-note">Les champs marqués d’un astérisque sont obligatoires.</p>
+
+            <fieldset>
+              <legend>Votre demande</legend>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="request-type">Type de demande *</label>
+                  <select id="request-type" name="requestType" required>
+                    <option value="">Choisir une option</option>
+                    <option value="Demande de formation">Demande de formation</option>
+                    <option value="Proposition de partenariat">Proposition de partenariat</option>
+                    <option value="Groupe pilote ou expérimentation">Groupe pilote ou expérimentation</option>
+                    <option value="Besoin d’accessibilité numérique">Besoin d’accessibilité numérique</option>
+                    <option value="Démonstration IA inclusive">Démonstration IA inclusive</option>
+                    <option value="Autre demande">Autre demande</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="preferred-format">Format envisagé</label>
+                  <select id="preferred-format" name="preferredFormat">
+                    <option value="À définir">À définir</option>
+                    <option value="Présentiel">Présentiel</option>
+                    <option value="À distance">À distance</option>
+                    <option value="Hybride">Hybride</option>
+                    <option value="Entretien téléphonique ou visioconférence">Entretien téléphonique ou visioconférence</option>
+                  </select>
+                </div>
+
+                <div class="form-field">
+                  <label for="name">Nom et prénom *</label>
+                  <input id="name" name="name" type="text" autocomplete="name" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="organisation">Organisation</label>
+                  <input id="organisation" name="organisation" type="text" autocomplete="organization" />
+                </div>
+
+                <div class="form-field">
+                  <label for="email">Adresse électronique *</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required />
+                </div>
+
+                <div class="form-field">
+                  <label for="phone">Téléphone</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" />
+                </div>
+
+                <div class="form-field form-field-full">
+                  <label for="audience">Public concerné</label>
+                  <input id="audience" name="audience" type="text" placeholder="Exemple : équipe RH, formateurs, personnes en situation de handicap, familles…" />
+                </div>
+
+                <div class="form-field">
+                  <label for="location">Lieu ou territoire</label>
+                  <input id="location" name="location" type="text" placeholder="Ville, département ou intervention à distance" />
+                </div>
+
+                <div class="form-field">
+                  <label for="period">Période envisagée</label>
+                  <input id="period" name="period" type="text" placeholder="Exemple : septembre 2026 ou à définir" />
+                </div>
+
+                <div class="form-field form-field-full">
+                  <label for="accessibility">Besoins d’accessibilité</label>
+                  <textarea id="accessibility" name="accessibility" rows="4" aria-describedby="accessibility-help"></textarea>
+                  <p id="accessibility-help" class="field-help">
+                    Indiquez uniquement les adaptations utiles à l’intervention. Aucun diagnostic médical détaillé n’est nécessaire.
+                  </p>
+                </div>
+
+                <div class="form-field form-field-full">
+                  <label for="message">Contexte, objectif et résultat attendu *</label>
+                  <textarea id="message" name="message" rows="8" required placeholder="Décrivez brièvement la situation, ce que vous souhaitez améliorer et le résultat attendu."></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="checkbox-row">
+              <input id="privacy-check" name="privacyCheck" type="checkbox" required />
+              <label for="privacy-check">
+                Je comprends que ce formulaire ouvre ma messagerie et je vérifie mon message avant l’envoi. *
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="contact-submit" type="submit">Préparer le courriel</button>
+              <button class="contact-link-button" type="button" id="copy-request">Copier ma demande</button>
+            </div>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
+          </form>
+
+          <aside aria-label="Coordonnées et conseils">
+            <section class="contact-panel" aria-labelledby="details-title">
+              <h2 id="details-title">Coordonnées</h2>
+              <ul class="contact-list">
+                <li>
+                  <strong>Courriel</strong>
+                  <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a>
+                </li>
+                <li>
+                  <strong>Téléphone</strong>
+                  <a href="tel:+33783336757">07 83 33 67 57</a>
+                </li>
+                <li>
+                  <strong>LinkedIn</strong>
+                  <a href="https://www.linkedin.com/in/patrickbilly" target="_blank" rel="noopener noreferrer">Patrick Billy</a>
+                </li>
+              </ul>
+            </section>
+
+            <section class="contact-panel" aria-labelledby="response-title">
+              <h2 id="response-title">Demandes adaptées</h2>
+              <p>Les premières informations servent à préparer :</p>
+              <ul>
+                <li>un échange de cadrage ;</li>
+                <li>un programme adapté ;</li>
+                <li>une proposition de groupe pilote ;</li>
+                <li>une estimation du format et des besoins matériels.</li>
+              </ul>
+              <p><strong>Élan pour Tous est un projet en cours de structuration.</strong> Toute mission reste soumise à l’étude du besoin et à un accord préalable.</p>
+            </section>
+
+            <section class="contact-warning" aria-labelledby="warning-title">
+              <h2 id="warning-title">Données à ne pas transmettre</h2>
+              <p>
+                N’envoyez pas de mot de passe, numéro de sécurité sociale, document d’identité,
+                information médicale détaillée ou donnée intime dans ce premier message.
+              </p>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="inner-section inner-section-alt" aria-labelledby="next-title">
+      <div class="inner-wrap">
+        <div class="inner-heading">
+          <p class="inner-tag">Après votre message</p>
+          <h2 id="next-title">Un cadrage simple avant toute proposition</h2>
+        </div>
+        <div class="inner-grid inner-grid-3">
+          <article class="inner-card"><h3>1. Comprendre</h3><p>Clarifier le public, l’objectif, les contraintes et les résultats attendus.</p></article>
+          <article class="inner-card"><h3>2. Adapter</h3><p>Définir le contenu, le format, l’accessibilité, le lieu et les moyens nécessaires.</p></article>
+          <article class="inner-card"><h3>3. Proposer</h3><p>Préparer une intervention, un atelier pilote ou une orientation vers un interlocuteur plus adapté.</p></article>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <p>© <span id="year"></span> Patrick Billy — Portfolio.</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="inner-wrap inner-footer-grid">
+      <p>© Patrick Billy — Élan pour Tous · Projet en cours de structuration.</p>
       <p><a href="#main">Retour en haut</a></p>
     </div>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    (() => {
+      const form = document.getElementById('contact-form');
+      const copyButton = document.getElementById('copy-request');
+      const status = document.getElementById('form-status');
 
-    const btn = document.getElementById('copy-btn');
-    const text = document.getElementById('template-text');
-    const status = document.getElementById('copy-status');
+      const clean = (value) => String(value || '').trim();
 
-    btn.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(text.textContent.trim());
-        status.textContent = "Copié. Tu peux coller ça direct dans ton mail.";
-      } catch (e) {
-        status.textContent = "Copie impossible ici (navigateur). Sélectionne le texte et fais Ctrl+C.";
-      }
-    });
+      const buildRequest = () => {
+        const data = new FormData(form);
+        const lines = [
+          'Bonjour Patrick,',
+          '',
+          `Type de demande : ${clean(data.get('requestType')) || 'Non précisé'}`,
+          `Nom : ${clean(data.get('name')) || 'Non précisé'}`,
+          `Organisation : ${clean(data.get('organisation')) || 'Non précisée'}`,
+          `Courriel : ${clean(data.get('email')) || 'Non précisé'}`,
+          `Téléphone : ${clean(data.get('phone')) || 'Non précisé'}`,
+          `Public concerné : ${clean(data.get('audience')) || 'Non précisé'}`,
+          `Format envisagé : ${clean(data.get('preferredFormat')) || 'À définir'}`,
+          `Lieu ou territoire : ${clean(data.get('location')) || 'Non précisé'}`,
+          `Période envisagée : ${clean(data.get('period')) || 'À définir'}`,
+          '',
+          'Besoins d’accessibilité :',
+          clean(data.get('accessibility')) || 'Aucun besoin indiqué à ce stade.',
+          '',
+          'Contexte, objectif et résultat attendu :',
+          clean(data.get('message')) || 'Non précisé.',
+          '',
+          'Cordialement,'
+        ];
+
+        return {
+          subject: `[Élan pour Tous] ${clean(data.get('requestType')) || 'Nouvelle demande'} — ${clean(data.get('name')) || 'Contact'}`,
+          body: lines.join('\n')
+        };
+      };
+
+      const showStatus = (message) => {
+        status.textContent = message;
+        status.hidden = false;
+      };
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+
+        const request = buildRequest();
+        const mailto = `mailto:elanpourtous49@gmail.com?subject=${encodeURIComponent(request.subject)}&body=${encodeURIComponent(request.body)}`;
+        showStatus('Votre messagerie va s’ouvrir. Relisez le courriel avant de l’envoyer. Si rien ne se passe, utilisez l’adresse elanpourtous49@gmail.com.');
+        window.location.href = mailto;
+      });
+
+      copyButton.addEventListener('click', async () => {
+        if (!form.reportValidity()) return;
+        const request = buildRequest();
+        const text = `${request.subject}\n\n${request.body}`;
+
+        try {
+          await navigator.clipboard.writeText(text);
+          showStatus('Votre demande a été copiée. Vous pouvez la coller dans votre messagerie.');
+        } catch (error) {
+          showStatus('La copie automatique est indisponible dans ce navigateur. Utilisez le bouton « Préparer le courriel ».');
+        }
+      });
+    })();
   </script>
 </body>
 </html>
