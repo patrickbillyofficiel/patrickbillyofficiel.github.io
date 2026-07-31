@@ -1,33 +1,26 @@
-/* lang-switch.js
-   Changement de langue intelligent
-   Patrick Billy – RGAA+++++
-*/
+/* Sélecteur de langues — amélioration progressive et liens explicites */
 (function () {
   "use strict";
 
   document.addEventListener("DOMContentLoaded", function () {
-    const switchLinks = document.querySelectorAll(".lang-switch a");
-
+    const switchLinks = document.querySelectorAll(".lang-switch a[data-lang]");
     if (!switchLinks.length) return;
 
     const pathParts = window.location.pathname.split("/").filter(Boolean);
-    // Ex: ["lang", "fr", "bio.html"]
-
-    if (pathParts.length < 2) return;
-
-    const currentLang = pathParts[1];
-    const currentPage = pathParts[2] || "index.html";
+    const isLanguagePath = pathParts[0] === "lang" && pathParts.length >= 2;
+    const currentLang = isLanguagePath ? pathParts[1] : document.documentElement.lang || "fr";
+    const currentPage = isLanguagePath ? pathParts.slice(2).join("/") || "index.html" : "index.html";
 
     switchLinks.forEach(function (link) {
       const targetLang = link.getAttribute("data-lang");
       if (!targetLang) return;
 
-      const newPath = "/lang/" + targetLang + "/" + currentPage;
-      link.setAttribute("href", newPath);
+      link.setAttribute("href", "/lang/" + targetLang + "/" + currentPage);
+      link.setAttribute("hreflang", targetLang);
+      link.setAttribute("lang", targetLang);
 
-      // Accessibilité : indiquer la langue courante
       if (targetLang === currentLang) {
-        link.setAttribute("aria-current", "true");
+        link.setAttribute("aria-current", "page");
       } else {
         link.removeAttribute("aria-current");
       }
