@@ -1,240 +1,109 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>CV interactif & comparateur IA · Patrick Billy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CV interactif de Patrick Billy avec comparateur IA multilingue : FR · EN · MG">
-
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/layout.css">
-  <link rel="stylesheet" href="../assets/css/components.css">
-
-  <!-- Icons / PWA (optionnel mais propre) -->
-  <link rel="icon" href="../assets/img/pb.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="../assets/img/pb-128.png">
-  <link rel="manifest" href="../manifest.webmanifest">
-  <meta name="theme-color" content="#0B1220">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Comparateur accessible d’offre et de profil – Élan pour Tous</title>
+  <meta name="description" content="Démonstration locale et accessible pour repérer les domaines mentionnés dans une offre, sans décision automatique de recrutement." />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/inner-pages.css" />
+  <link rel="stylesheet" href="../assets/css/cv-ia-accessible.css" />
 </head>
-
-<body>
-  <!-- MINI-PLAYER FLOTTANT -->
-  <div class="voice-player" hidden>
-    <button id="vp-pause" type="button">⏯ Pause</button>
-    <button id="vp-stop" type="button">⏹ Stop</button>
-  </div>
-
-  <a href="#main" class="skiplink">Aller au contenu principal</a>
-
-  <!-- HEADER -->
+<body class="inner-page">
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
   <header class="site-header" role="banner">
-  <nav class="nav" aria-label="Navigation principale">
-    <ul class="nav-main">
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/bios/bio-fr.html">Bio</a></li>
-      <li><a href="pages/competences.html">Compétences</a></li>
-      <li><a href="/portfolio/index.html">Portfolio</a></li>
-      <li><a href="pages/rgaa.html">RGAA+++++</a></li>
-      <li><a href="/portfolio/contact.html">Contact</a></li>
-    </ul>
-
-    <ul class="nav-lang" aria-label="Langues">
-      <li><a href="lang/fr/index.html" lang="fr">FR</a></li>
-      <li><a href="lang/en/index.html" lang="en">EN</a></li>
-      <li><a href="lang/es/index.html" lang="es">ES</a></li>
-      <li><a href="lang/de/index.html" lang="de">DE</a></li>
-      <li><a href="lang/mg/index.html" lang="mg">MG</a></li>
-    </ul>
-  </nav>
-</header>
+    <nav class="inner-nav" aria-label="Navigation principale">
+      <a class="inner-brand" href="../index.html"><strong>Élan pour Tous</strong><span>IA inclusive · Patrick Billy</span></a>
+      <ul class="inner-menu">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="./bio.html">Bio</a></li>
+        <li><a href="./competences.html">Compétences</a></li>
+        <li><a href="./cv-ia.html" aria-current="page">Comparateur</a></li>
+        <li><a href="./rgaa.html">RGAA</a></li>
+        <li><a href="../portfolio/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main id="main" tabindex="-1">
-
-    <!-- HERO -->
-    <section class="section">
-      <div class="container">
-        <h1>CV interactif &amp; comparateur IA</h1>
-
-        <div class="lang-block lang-fr">
-          <p>Comparateur IA multilingue (FR · EN · MG) pour rapprocher votre offre et mon profil structuré.</p>
+    <section class="inner-hero" aria-labelledby="comparator-title">
+      <div class="inner-wrap inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Démonstration locale — aucune candidature rejetée</p>
+          <h1 id="comparator-title">Comparer une offre avec des domaines de compétences</h1>
+          <p class="inner-lead">L’outil repère uniquement des mots-clés présents dans le texte. Il ne mesure pas une personne, ne classe pas les candidats et ne remplace pas un entretien ou une mise en situation accessible.</p>
         </div>
+        <aside class="inner-summary" aria-labelledby="rules-title">
+          <h2 id="rules-title">Règles d’utilisation</h2>
+          <ul>
+            <li>Aucune donnée n’est envoyée à un serveur.</li>
+            <li>Aucun score de personnalité ou de handicap.</li>
+            <li>Aucune décision automatique.</li>
+            <li>Une vérification humaine reste obligatoire.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-        <div class="lang-block lang-en" hidden>
-          <p>Multilingual AI comparator (FR · EN · MG) to match your job offer with my structured profile.</p>
-        </div>
-
-        <div class="lang-block lang-mg" hidden>
-          <p>Fampitahana IA (FR · EN · MG) hanahafana ny tolotra asa sy ny mombamomba ahy.</p>
+    <section class="inner-section" aria-labelledby="profile-title">
+      <div class="inner-wrap">
+        <div class="inner-heading"><p class="inner-tag">Profil présenté</p><h2 id="profile-title">Domaines pouvant être examinés</h2></div>
+        <div class="inner-grid inner-grid-3">
+          <article class="inner-card"><h3>Accessibilité numérique</h3><p>Structure HTML, navigation clavier, formulaires, contrastes, RGAA et tests d’usage.</p></article>
+          <article class="inner-card"><h3>Formation et pédagogie</h3><p>Conception de supports, animation, adaptation du rythme et exercices pratiques.</p></article>
+          <article class="inner-card"><h3>IA inclusive</h3><p>Reformulation, transcription, organisation, vérification humaine et protection des données.</p></article>
+          <article class="inner-card"><h3>Web et contenus</h3><p>HTML, CSS, JavaScript, WordPress, SEO et maintenance éditoriale.</p></article>
+          <article class="inner-card"><h3>Design et communication</h3><p>Identité visuelle, supports imprimés et numériques, interfaces compréhensibles.</p></article>
+          <article class="inner-card"><h3>Emploi et recrutement</h3><p>CV, entretiens, compétences transférables, aménagements et mises en situation.</p></article>
         </div>
       </div>
     </section>
 
-    <!-- PROFIL STRUCTURÉ -->
-    <section class="section">
-      <div class="container">
-        <h2>Profil structuré (vue dirigeant)</h2>
+    <section class="inner-section inner-section-alt" aria-labelledby="tool-title">
+      <div class="inner-wrap">
+        <div class="inner-heading"><p class="inner-tag">Outil de démonstration</p><h2 id="tool-title">Analyser les termes d’une offre</h2><p>Ne collez pas de données personnelles, de candidature réelle ou d’information confidentielle.</p></div>
 
-        <div class="card-list">
-          <article class="card">
-            <h3>Fonction cible</h3>
-            <p>Consultant / chef de projet en accessibilité numérique, inclusion et IA appliquée.</p>
-          </article>
+        <div class="cv-layout">
+          <form id="cv-comparator-form" class="cv-panel" novalidate>
+            <label for="job-offer">Texte de l’offre ou de la mission</label>
+            <textarea id="job-offer" name="jobOffer" rows="12" minlength="20" aria-describedby="job-offer-help job-offer-error" required></textarea>
+            <p id="job-offer-help" class="cv-help">Copiez uniquement la description de la mission, les compétences demandées et les conditions de travail. Minimum : 20 caractères.</p>
+            <p id="job-offer-error" class="cv-error" role="alert" hidden></p>
+            <div class="cv-actions">
+              <button class="cv-action cv-action-primary" type="submit">Analyser localement</button>
+              <button class="cv-action cv-action-secondary" id="clear-analysis" type="button">Effacer</button>
+            </div>
+            <div id="analysis-status" class="cv-status" role="status" aria-live="polite" hidden></div>
+          </form>
 
-          <article class="card">
-            <h3>Domaines forts</h3>
-            <ul>
-              <li>Accessibilité numérique (RGAA / WCAG) – <strong>Expert</strong></li>
-              <li>Solutions low-tech / offline – <strong>Expert</strong></li>
-              <li>IA appliquée handicap / pédagogie – <strong>Expert</strong></li>
-              <li>Design inclusif &amp; UX simple – <strong>Avancé</strong></li>
-              <li>Formation &amp; accompagnement – <strong>Expert</strong></li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <h3>Types de missions</h3>
-            <ul>
-              <li>Audit accessibilité &amp; mise en conformité.</li>
-              <li>Simulation d’aménagement (Mini-WTD).</li>
-              <li>Accompagnement RH &amp; handicap.</li>
-              <li>Formations IA minimum vital.</li>
-              <li>Interventions France / Madagascar.</li>
-            </ul>
-          </article>
+          <section class="cv-panel cv-result" id="analysis-result" tabindex="-1" aria-labelledby="result-title" hidden>
+            <h3 id="result-title">Résultat indicatif</h3>
+            <p id="analysis-summary"></p>
+            <div class="cv-warning"><strong>Attention :</strong> l’absence d’un mot-clé ne prouve pas une absence de compétence. Les synonymes, le contexte, l’expérience et les aménagements doivent être examinés par une personne.</div>
+            <table>
+              <caption>Domaines analysés et vérifications humaines à prévoir</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Domaine</th>
+                  <th scope="col">Éléments repérés</th>
+                  <th scope="col">Étape humaine</th>
+                </tr>
+              </thead>
+              <tbody id="analysis-table-body"></tbody>
+            </table>
+          </section>
         </div>
       </div>
     </section>
 
-    <!-- CRABES -->
-    <section class="section">
-      <div class="container">
-        <h2>La revanche des crabes</h2>
-
-        <article class="card">
-          <p>Deux crabes : l’un avec un CV, l’autre avec une RQTH. Ensemble, ils créent la sortie du seau.</p>
-          <blockquote>« Vous voulez vraiment rester dedans ? Nous, on ne demandera plus l’autorisation. »</blockquote>
-        </article>
-      </div>
+    <section class="inner-section" aria-labelledby="recruitment-title">
+      <div class="inner-wrap"><div class="inner-callout"><h2 id="recruitment-title">Principe de recrutement inclusif</h2><p><strong>Tester les compétences plutôt que juger le handicap, la voix, l’apparence, le parcours ou la forme du CV.</strong></p><p><a href="./formations.html#recrutement">Consulter la formation sur le recrutement inclusif</a>.</p></div></div>
     </section>
-
-    <!-- COMPARATEUR IA -->
-    <section class="section">
-      <div class="container">
-        <h2>Comparer votre offre avec mon profil</h2>
-
-        <div class="grid-2">
-
-          <!-- COLONNE OFFRE -->
-          <article class="card">
-            <h3>1. Collez votre offre</h3>
-
-            <div class="textarea-wrapper">
-              <textarea id="job-offer" rows="10" placeholder="Collez ici l’offre…"></textarea>
-              <button id="micro-btn" class="micro-btn" type="button" aria-label="Dicter l’offre">🎤</button>
-            </div>
-
-            <button id="analyze-btn" class="btn btn-primary" type="button" style="margin-top:1rem;">
-              Analyser l’offre avec l’IA
-            </button>
-
-            <div id="ia-loader" class="ia-loader" hidden></div>
-
-            <p id="analysis-note" class="note" hidden>
-              Analyse IA simulée — restitution FR · EN · MG par onglets.
-            </p>
-          </article>
-
-          <!-- COLONNE RÉSULTAT -->
-          <article class="card">
-            <h3>2. Résultat IA multilingue</h3>
-
-            <!-- ONGLET LANGUES -->
-            <div class="ia-tabs" aria-label="Choix de langue pour le résultat IA">
-              <button class="ia-tab is-active" type="button" data-target="ia-fr">FR</button>
-              <button class="ia-tab" type="button" data-target="ia-en">EN</button>
-              <button class="ia-tab" type="button" data-target="ia-mg">MG</button>
-            </div>
-
-            <!-- BOUTONS AUDIO -->
-            <div class="voice-controls" aria-label="Contrôles audio">
-              <button id="voice-read-btn" class="btn btn-ghost" type="button">🔊 Lire</button>
-              <button id="voice-stop-btn" class="btn btn-ghost" type="button">⏹ Stop</button>
-              <button id="voice-dictate-btn" class="btn btn-primary" type="button">🎤 Dicter</button>
-            </div>
-
-            <!-- FR -->
-            <div id="ia-fr" class="ia-panel">
-              <div class="cv-ia-result">
-                <h4>Résumé direction</h4>
-                <ul class="summary-list-fr"></ul>
-
-                <h4>Comparaison par bloc</h4>
-                <table class="cv-ia-table">
-                  <tbody class="table-body-fr"></tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- EN -->
-            <div id="ia-en" class="ia-panel" hidden>
-              <div class="cv-ia-result">
-                <h4>Executive summary</h4>
-                <ul class="summary-list-en"></ul>
-
-                <h4>Block comparison</h4>
-                <table class="cv-ia-table">
-                  <tbody class="table-body-en"></tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- MG -->
-            <div id="ia-mg" class="ia-panel" hidden>
-              <div class="cv-ia-result">
-                <h4>Famintinana</h4>
-                <ul class="summary-list-mg"></ul>
-
-                <h4>Fampitahana</h4>
-                <table class="cv-ia-table">
-                  <tbody class="table-body-mg"></tbody>
-                </table>
-              </div>
-            </div>
-
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPLICATION -->
-    <section class="section">
-      <div class="container">
-        <h2>Connexion IA</h2>
-        <div class="card">
-          <p>
-            Le moteur IA peut être relié à une API (ChatGPT / interne).
-            Cette version simule l'analyse pour démontrer le format FR·EN·MG.
-          </p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; <span id="year"></span> Patrick Billy</p>
-      <p><a href="../index.html#hero">Retour à l’accueil</a></p>
-    </div>
-  </footer>
-
-  <!-- ✅ Scripts : une seule fois chacun -->
-  <script src="../assets/js/lang-switch.js"></script>
-  <script src="../assets/js/nav-toggle.js"></script>
+  <footer class="site-footer" role="contentinfo"><div class="inner-wrap inner-footer"><p>© Patrick Billy — Élan pour Tous</p><p><a href="./accessibilite.html">Accessibilité : non conforme</a></p></div></footer>
   <script src="../assets/js/cv-ia.js"></script>
-  <script src="../assets/js/voice-module.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
