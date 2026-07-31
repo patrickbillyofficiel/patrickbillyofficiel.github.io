@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demander un devis – Élan pour Tous</title>
+  <meta name="description" content="Préparer une demande de devis pour une formation, un atelier, un diagnostic ou un groupe pilote Élan pour Tous, puis imprimer ou enregistrer le récapitulatif en PDF." />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/inner-pages.css" />
+  <link rel="stylesheet" href="../assets/css/quote-request.css" />
+</head>
+<body class="inner-page">
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+
+  <header class="site-header" role="banner">
+    <nav class="inner-nav" aria-label="Navigation principale">
+      <a class="inner-brand" href="../index.html">
+        <strong>Élan pour Tous</strong>
+        <span>IA inclusive · Patrick Billy</span>
+      </a>
+      <ul class="inner-menu">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="./elan-pour-tous.html">Le projet</a></li>
+        <li><a href="./formations.html">Formations</a></li>
+        <li><a href="./tarifs-formats.html">Tarifs et formats</a></li>
+        <li><a href="./demande-devis.html" aria-current="page">Demander un devis</a></li>
+        <li><a href="../portfolio/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="inner-hero" aria-labelledby="quote-title">
+      <div class="inner-wrap inner-hero-grid">
+        <div>
+          <p class="inner-eyebrow">Pré-demande non contractuelle</p>
+          <h1 id="quote-title">Préparez votre demande de devis</h1>
+          <p class="inner-lead">
+            Sélectionnez les programmes, le format, le public et les adaptations nécessaires.
+            Le site produit un récapitulatif que vous pouvez imprimer, enregistrer en PDF ou envoyer par courriel.
+          </p>
+          <div class="inner-actions">
+            <a class="inner-button inner-button-primary" href="#quote-form">Commencer la demande</a>
+            <a class="inner-button inner-button-secondary" href="./tarifs-formats.html">Consulter les tarifs indicatifs</a>
+          </div>
+        </div>
+
+        <aside class="inner-summary" aria-labelledby="quote-summary-intro">
+          <h2 id="quote-summary-intro">Fonctionnement</h2>
+          <ul>
+            <li>Aucune donnée n’est enregistrée par le site.</li>
+            <li>Le prix affiché reste une estimation indicative.</li>
+            <li>Le devis définitif sera établi après échange.</li>
+            <li>L’impression permet un enregistrement en PDF.</li>
+            <li>Le document généré ne vaut pas engagement contractuel.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="inner-section" aria-labelledby="form-title">
+      <div class="inner-wrap">
+        <div class="inner-heading">
+          <p class="inner-tag">Cadrage de la mission</p>
+          <h2 id="form-title">Informations nécessaires à l’étude</h2>
+          <p>Les champs obligatoires sont signalés par un astérisque. Évitez toute donnée médicale détaillée ou donnée d’identité sensible.</p>
+        </div>
+
+        <div class="quote-layout">
+          <form id="quote-form" class="quote-form">
+            <p class="quote-required">* Champ obligatoire</p>
+
+            <fieldset>
+              <legend>1. Contact et organisation</legend>
+              <div class="quote-grid">
+                <div class="quote-field">
+                  <label for="contact-name">Nom et prénom *</label>
+                  <input id="contact-name" name="contactName" type="text" autocomplete="name" required />
+                </div>
+                <div class="quote-field">
+                  <label for="organisation">Organisation</label>
+                  <input id="organisation" name="organisation" type="text" autocomplete="organization" />
+                </div>
+                <div class="quote-field">
+                  <label for="email">Adresse électronique *</label>
+                  <input id="email" name="email" type="email" autocomplete="email" required />
+                </div>
+                <div class="quote-field">
+                  <label for="phone">Téléphone</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" />
+                </div>
+                <div class="quote-field">
+                  <label for="organisation-type">Type de structure</label>
+                  <select id="organisation-type" name="organisationType">
+                    <option value="Non précisé">Choisir une option</option>
+                    <option>Entreprise</option>
+                    <option>Organisme de formation</option>
+                    <option>Collectivité ou service public</option>
+                    <option>Association</option>
+                    <option>Établissement scolaire</option>
+                    <option>Structure sociale ou médico-sociale</option>
+                    <option>Particulier ou proche</option>
+                    <option>Autre structure</option>
+                  </select>
+                </div>
+                <div class="quote-field">
+                  <label for="territory">Ville ou territoire</label>
+                  <input id="territory" name="territory" type="text" placeholder="Ville, département, région ou distance" />
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>2. Programmes concernés</legend>
+              <p class="quote-choice-title">Sélectionnez un ou plusieurs programmes *</p>
+              <div class="quote-options" id="program-options">
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Réseaux sociaux et protection des mineurs" /> <span>Protection des mineurs</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Recrutement inclusif sans discrimination" /> <span>Recrutement inclusif</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Prévention des maltraitances" /> <span>Prévention des maltraitances</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Vie de couple, libre choix et consentement" /> <span>Vie de couple et libre choix</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Accès au droit selon le pays" /> <span>Accès au droit par pays</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Initiation à l’intelligence artificielle inclusive" /> <span>Initiation à l’IA inclusive</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Prise de notes et transcription accessibles" /> <span>Notes et transcription</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="IA et démarches administratives" /> <span>Démarches administratives</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="CV, emploi et préparation des candidats" /> <span>CV et emploi</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Accessibilité numérique, RGAA et contenus compréhensibles" /> <span>Accessibilité numérique</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Pédagogie inclusive et accompagnement" /> <span>Pédagogie inclusive</span></label>
+                <label class="quote-choice"><input type="checkbox" name="programs" value="Work-Test-Démo" /> <span>Work-Test-Démo</span></label>
+              </div>
+              <p id="program-error" class="quote-help" role="alert" hidden>Sélectionnez au moins un programme.</p>
+            </fieldset>
+
+            <fieldset>
+              <legend>3. Format et organisation</legend>
+              <div class="quote-grid">
+                <div class="quote-field">
+                  <label for="format">Format principal *</label>
+                  <select id="format" name="format" required>
+                    <option value="">Choisir un format</option>
+                    <option value="Sensibilisation de 2 heures" data-price="800">Sensibilisation de 2 heures — à partir de 800 €</option>
+                    <option value="Atelier d’une demi-journée" data-price="1500">Atelier d’une demi-journée — à partir de 1 500 €</option>
+                    <option value="Formation d’une journée" data-price="2500">Formation d’une journée — à partir de 2 500 €</option>
+                    <option value="Diagnostic inclusif et recommandations" data-price="3500">Diagnostic inclusif — à partir de 3 500 €</option>
+                    <option value="Parcours de plusieurs jours" data-price="custom">Parcours de plusieurs jours — sur devis</option>
+                    <option value="Groupe pilote ou démonstrateur" data-price="custom">Groupe pilote ou démonstrateur — sur devis</option>
+                  </select>
+                </div>
+                <div class="quote-field">
+                  <label for="delivery-mode">Modalité *</label>
+                  <select id="delivery-mode" name="deliveryMode" required>
+                    <option value="">Choisir une modalité</option>
+                    <option>Présentiel</option>
+                    <option>À distance</option>
+                    <option>Hybride</option>
+                    <option>À définir</option>
+                  </select>
+                </div>
+                <div class="quote-field">
+                  <label for="participants">Nombre estimé de participants</label>
+                  <input id="participants" name="participants" type="number" min="1" max="500" inputmode="numeric" />
+                </div>
+                <div class="quote-field">
+                  <label for="period">Période envisagée</label>
+                  <input id="period" name="period" type="text" placeholder="Exemple : octobre 2026 ou à définir" />
+                </div>
+                <div class="quote-field quote-field-full">
+                  <label for="audience">Public concerné *</label>
+                  <textarea id="audience" name="audience" rows="4" required placeholder="Fonctions, niveau de connaissance, besoins généraux et contexte professionnel ou personnel."></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>4. Objectifs, accessibilité et livrables</legend>
+              <div class="quote-grid">
+                <div class="quote-field quote-field-full">
+                  <label for="objectives">Objectifs et résultats attendus *</label>
+                  <textarea id="objectives" name="objectives" rows="6" required placeholder="Décrivez ce que les participants devront comprendre, savoir faire ou améliorer."></textarea>
+                </div>
+                <div class="quote-field quote-field-full">
+                  <label for="accessibility">Adaptations d’accessibilité</label>
+                  <textarea id="accessibility" name="accessibility" rows="5" placeholder="Exemples : rythme, pauses, documents modifiables, transcription, lecture audio, clavier, FALC, interprétariat…"></textarea>
+                  <p class="quote-help">Indiquez les adaptations utiles sans transmettre de diagnostic médical détaillé.</p>
+                </div>
+                <div class="quote-field quote-field-full">
+                  <label for="deliverables">Supports ou livrables souhaités</label>
+                  <textarea id="deliverables" name="deliverables" rows="4" placeholder="Support pédagogique, synthèse, recommandations, protocole, grille d’évaluation…"></textarea>
+                </div>
+                <div class="quote-field">
+                  <label for="budget">Budget envisagé</label>
+                  <input id="budget" name="budget" type="text" placeholder="Montant, fourchette ou à définir" />
+                </div>
+                <div class="quote-field">
+                  <label for="deadline">Date limite de réponse</label>
+                  <input id="deadline" name="deadline" type="date" />
+                </div>
+                <div class="quote-field quote-field-full">
+                  <label for="additional">Informations complémentaires</label>
+                  <textarea id="additional" name="additional" rows="4"></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <label class="quote-choice">
+              <input id="confirmation" name="confirmation" type="checkbox" required />
+              <span>Je comprends que ce document est une demande non contractuelle et que le prix définitif sera confirmé par une proposition ou un devis accepté. *</span>
+            </label>
+
+            <div class="quote-actions">
+              <button class="quote-primary" type="button" id="refresh-summary">Mettre à jour le récapitulatif</button>
+              <button class="quote-secondary" type="button" id="print-summary">Imprimer ou enregistrer en PDF</button>
+              <button class="quote-secondary" type="submit">Préparer le courriel</button>
+            </div>
+            <div id="quote-status" class="quote-status" role="status" aria-live="polite" hidden></div>
+          </form>
+
+          <aside class="quote-summary" aria-labelledby="summary-title">
+            <h2 id="summary-title">Récapitulatif de la demande</h2>
+            <p>Le contenu se met à jour à partir du formulaire.</p>
+
+            <article id="quote-document" class="quote-document">
+              <header class="quote-document-header">
+                <p><strong>Élan pour Tous — Patrick Billy</strong></p>
+                <p>Pré-demande de devis non contractuelle</p>
+                <p>Date : <span id="summary-date"></span></p>
+              </header>
+
+              <h3>Demandeur</h3>
+              <p id="summary-contact" class="quote-placeholder">Informations à compléter.</p>
+
+              <h3>Programmes</h3>
+              <ul id="summary-programs"><li class="quote-placeholder">Aucun programme sélectionné.</li></ul>
+
+              <h3>Organisation prévue</h3>
+              <p id="summary-organisation" class="quote-placeholder">Format et modalités à compléter.</p>
+
+              <h3>Public et objectifs</h3>
+              <p id="summary-objectives" class="quote-placeholder">Informations à compléter.</p>
+
+              <h3>Accessibilité et livrables</h3>
+              <p id="summary-accessibility" class="quote-placeholder">Aucune adaptation indiquée à ce stade.</p>
+
+              <h3>Estimation indicative</h3>
+              <p id="summary-price"><strong>À déterminer selon le format.</strong></p>
+
+              <h3>Informations complémentaires</h3>
+              <p id="summary-additional">Aucune information complémentaire.</p>
+
+              <div class="quote-notice">
+                <strong>Document non contractuel.</strong> Cette estimation ne constitue ni un devis accepté,
+                ni une réservation, ni une garantie de financement. Les frais, adaptations, taxes et conditions
+                seront précisés après analyse du besoin.
+              </div>
+            </article>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="inner-wrap inner-footer">
+      <p>© Patrick Billy — Élan pour Tous · Projet en cours de structuration.</p>
+      <a href="mailto:elanpourtous49@gmail.com">elanpourtous49@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const form = document.getElementById('quote-form');
+      const formatSelect = document.getElementById('format');
+      const status = document.getElementById('quote-status');
+      const programError = document.getElementById('program-error');
+
+      const summary = {
+        date: document.getElementById('summary-date'),
+        contact: document.getElementById('summary-contact'),
+        programs: document.getElementById('summary-programs'),
+        organisation: document.getElementById('summary-organisation'),
+        objectives: document.getElementById('summary-objectives'),
+        accessibility: document.getElementById('summary-accessibility'),
+        price: document.getElementById('summary-price'),
+        additional: document.getElementById('summary-additional')
+      };
+
+      const clean = (value) => String(value || '').trim();
+      const escapeText = (value) => clean(value) || 'Non précisé';
+      const selectedPrograms = () => Array.from(form.querySelectorAll('input[name="programs"]:checked')).map((item) => item.value);
+
+      const formatPrice = () => {
+        const option = formatSelect.options[formatSelect.selectedIndex];
+        const price = option ? option.dataset.price : '';
+        if (!price) return 'À déterminer selon le format.';
+        if (price === 'custom') return 'Sur devis après analyse du périmètre.';
+        return `Base indicative : à partir de ${Number(price).toLocaleString('fr-FR')} €.`;
+      };
+
+      const updateSummary = () => {
+        const data = new FormData(form);
+        const programs = selectedPrograms();
+        const participantText = clean(data.get('participants')) ? `${clean(data.get('participants'))} participant(s)` : 'Nombre de participants non précisé';
+
+        summary.contact.textContent = [
+          escapeText(data.get('contactName')),
+          clean(data.get('organisation')),
+          clean(data.get('organisationType')) !== 'Non précisé' ? clean(data.get('organisationType')) : '',
+          clean(data.get('email')),
+          clean(data.get('phone')),
+          clean(data.get('territory'))
+        ].filter(Boolean).join(' — ') || 'Informations à compléter.';
+        summary.contact.classList.toggle('quote-placeholder', !clean(data.get('contactName')));
+
+        summary.programs.innerHTML = '';
+        if (programs.length) {
+          programs.forEach((program) => {
+            const item = document.createElement('li');
+            item.textContent = program;
+            summary.programs.appendChild(item);
+          });
+        } else {
+          const item = document.createElement('li');
+          item.textContent = 'Aucun programme sélectionné.';
+          item.className = 'quote-placeholder';
+          summary.programs.appendChild(item);
+        }
+
+        summary.organisation.textContent = [
+          escapeText(data.get('format')),
+          escapeText(data.get('deliveryMode')),
+          participantText,
+          clean(data.get('period')) ? `Période : ${clean(data.get('period'))}` : '',
+          clean(data.get('deadline')) ? `Réponse souhaitée avant le ${new Date(`${clean(data.get('deadline'))}T12:00:00`).toLocaleDateString('fr-FR')}` : ''
+        ].filter(Boolean).join(' — ');
+
+        const audience = clean(data.get('audience'));
+        const objectives = clean(data.get('objectives'));
+        summary.objectives.textContent = `${audience || 'Public non précisé.'}\n\n${objectives || 'Objectifs non précisés.'}`;
+        summary.objectives.style.whiteSpace = 'pre-line';
+        summary.objectives.classList.toggle('quote-placeholder', !audience && !objectives);
+
+        const accessibility = clean(data.get('accessibility')) || 'Aucune adaptation indiquée à ce stade.';
+        const deliverables = clean(data.get('deliverables')) || 'Aucun livrable particulier indiqué.';
+        summary.accessibility.textContent = `${accessibility}\n\nLivrables : ${deliverables}`;
+        summary.accessibility.style.whiteSpace = 'pre-line';
+
+        const budget = clean(data.get('budget'));
+        summary.price.innerHTML = '';
+        const priceStrong = document.createElement('strong');
+        priceStrong.textContent = formatPrice();
+        summary.price.appendChild(priceStrong);
+        if (budget) summary.price.appendChild(document.createTextNode(` Budget communiqué : ${budget}.`));
+
+        summary.additional.textContent = clean(data.get('additional')) || 'Aucune information complémentaire.';
+        summary.date.textContent = new Date().toLocaleDateString('fr-FR');
+      };
+
+      const validatePrograms = () => {
+        const valid = selectedPrograms().length > 0;
+        programError.hidden = valid;
+        return valid;
+      };
+
+      const validateForm = () => form.reportValidity() && validatePrograms();
+
+      const buildEmail = () => {
+        const data = new FormData(form);
+        const programs = selectedPrograms();
+        const lines = [
+          'Bonjour Patrick,',
+          '',
+          'Je souhaite recevoir une proposition pour la demande suivante.',
+          '',
+          `Nom : ${escapeText(data.get('contactName'))}`,
+          `Organisation : ${escapeText(data.get('organisation'))}`,
+          `Type de structure : ${escapeText(data.get('organisationType'))}`,
+          `Courriel : ${escapeText(data.get('email'))}`,
+          `Téléphone : ${escapeText(data.get('phone'))}`,
+          `Territoire : ${escapeText(data.get('territory'))}`,
+          '',
+          'Programmes :',
+          ...programs.map((program) => `- ${program}`),
+          '',
+          `Format : ${escapeText(data.get('format'))}`,
+          `Modalité : ${escapeText(data.get('deliveryMode'))}`,
+          `Participants : ${escapeText(data.get('participants'))}`,
+          `Période : ${escapeText(data.get('period'))}`,
+          '',
+          'Public concerné :',
+          escapeText(data.get('audience')),
+          '',
+          'Objectifs :',
+          escapeText(data.get('objectives')),
+          '',
+          'Adaptations d’accessibilité :',
+          escapeText(data.get('accessibility')),
+          '',
+          'Livrables souhaités :',
+          escapeText(data.get('deliverables')),
+          '',
+          `Budget envisagé : ${escapeText(data.get('budget'))}`,
+          `Date limite de réponse : ${escapeText(data.get('deadline'))}`,
+          '',
+          'Informations complémentaires :',
+          escapeText(data.get('additional')),
+          '',
+          `Estimation indicative affichée : ${formatPrice()}`,
+          '',
+          'Je comprends que cette demande est non contractuelle.',
+          '',
+          'Cordialement,'
+        ];
+
+        return {
+          subject: `[Élan pour Tous] Demande de devis — ${clean(data.get('organisation')) || clean(data.get('contactName')) || 'Nouveau contact'}`,
+          body: lines.join('\n')
+        };
+      };
+
+      const showStatus = (message) => {
+        status.textContent = message;
+        status.hidden = false;
+      };
+
+      form.addEventListener('input', updateSummary);
+      form.addEventListener('change', updateSummary);
+
+      document.getElementById('refresh-summary').addEventListener('click', () => {
+        updateSummary();
+        showStatus('Le récapitulatif a été mis à jour.');
+      });
+
+      document.getElementById('print-summary').addEventListener('click', () => {
+        updateSummary();
+        if (!validateForm()) {
+          showStatus('Complétez les champs obligatoires avant l’impression.');
+          return;
+        }
+        showStatus('La fenêtre d’impression va s’ouvrir. Choisissez « Enregistrer au format PDF » pour créer un fichier PDF.');
+        window.print();
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        updateSummary();
+        if (!validateForm()) {
+          showStatus('Complétez les champs obligatoires et sélectionnez au moins un programme.');
+          return;
+        }
+        const email = buildEmail();
+        const link = `mailto:elanpourtous49@gmail.com?subject=${encodeURIComponent(email.subject)}&body=${encodeURIComponent(email.body)}`;
+        showStatus('Votre messagerie va s’ouvrir. Relisez le contenu avant l’envoi.');
+        window.location.href = link;
+      });
+
+      summary.date.textContent = new Date().toLocaleDateString('fr-FR');
+      updateSummary();
+    })();
+  </script>
+</body>
+</html>
