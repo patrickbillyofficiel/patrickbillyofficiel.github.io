@@ -1,0 +1,49 @@
+name: Contrôle accessibilité
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pa11y:
+    name: Tests WCAG automatisés
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v6
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Installer les outils de contrôle
+        run: npm install --no-save pa11y-ci@4 serve@14
+
+      - name: Démarrer le site statique
+        run: |
+          npx serve . -l 4173 > /tmp/elan-site.log 2>&1 &
+          echo $! > /tmp/elan-site.pid
+          for tentative in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/elan-site.log
+          exit 1
+
+      - name: Contrôler les pages principales
+        run: npx pa11y-ci --config .pa11yci.json
+
+      - name: Rappel sur la portée du contrôle
+        if: always()
+        run: |
+          echo "Ces tests automatisés ne remplacent pas un audit RGAA manuel des 106 critères applicables."
