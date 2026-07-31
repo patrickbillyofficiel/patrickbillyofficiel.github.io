@@ -107,10 +107,35 @@ a[aria-current="page"] {
   font-weight: 800;
 }
 
-/* Focus clavier visible sur tous les éléments interactifs. */
+/* Les composants ressemblant à des boutons conservent leur contraste après visite. */
+a.home-button-primary:visited,
+a.inner-button-primary:visited,
+a.btn-primary:visited {
+  color: #073b72;
+}
+
+.home-page .home-section a.home-button-primary:visited,
+a.contact-submit:visited,
+a.quote-primary:visited {
+  color: #ffffff;
+}
+
+a.home-button-secondary:visited,
+a.inner-button-secondary:visited {
+  color: #ffffff;
+}
+
+.inner-callout a:not(.inner-button),
+.inner-callout a:not(.inner-button):visited,
+.partnership-panel a:not(.home-button),
+.partnership-panel a:not(.home-button):visited {
+  color: #ffffff;
+}
+
+/* Focus clavier visible sur tous les éléments interactifs, même si un ancien composant le redéfinit. */
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-  outline: 4px solid var(--a11y-focus);
-  outline-offset: 3px;
+  outline: 4px solid var(--a11y-focus) !important;
+  outline-offset: 3px !important;
   border-radius: 0.2rem;
 }
 
@@ -131,6 +156,11 @@ a[aria-current="page"] {
   border-radius: 0.5rem;
   font-weight: 800;
   text-decoration: none;
+}
+
+.skip-link:visited,
+.skiplink:visited {
+  color: #ffffff;
 }
 
 .skip-link:focus,
@@ -254,7 +284,7 @@ caption {
 
 @media (forced-colors: active) {
   :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
-    outline: 3px solid CanvasText;
+    outline: 3px solid CanvasText !important;
   }
 
   .skip-link,
