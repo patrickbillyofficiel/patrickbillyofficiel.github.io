@@ -62,3 +62,24 @@ p {
   margin-top: 0;
   margin-bottom: 0.75rem;
 }
+
+/* Contraste des boutons de la nouvelle page d’accueil */
+.home-page .home-section .home-button-primary {
+  color: #ffffff;
+  background: #0b5cad;
+  border-color: #0b5cad;
+}
+
+.home-page .home-section .home-button-primary:hover,
+.home-page .home-section .home-button-primary:focus {
+  color: #ffffff;
+  background: #073b72;
+  border-color: #073b72;
+}
+
+.home-page .home-hero .home-button-primary,
+.home-page .partnership-panel .home-button-primary {
+  color: #073b72;
+  background: #ffffff;
+  border-color: #ffffff;
+}
