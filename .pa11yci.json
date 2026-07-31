@@ -9,6 +9,11 @@
   },
   "urls": [
     "http://127.0.0.1:4173/",
+    "http://127.0.0.1:4173/lang/fr/index.html",
+    "http://127.0.0.1:4173/lang/en/index.html",
+    "http://127.0.0.1:4173/lang/es/index.html",
+    "http://127.0.0.1:4173/lang/de/index.html",
+    "http://127.0.0.1:4173/lang/mg/index.html",
     "http://127.0.0.1:4173/pages/elan-pour-tous.html",
     "http://127.0.0.1:4173/pages/formations.html",
     "http://127.0.0.1:4173/pages/tarifs-formats.html",
