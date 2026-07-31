@@ -267,6 +267,22 @@ caption {
   border-color: #ffffff;
 }
 
+/* Le choix de langue ne doit jamais disparaître sur petit écran. */
+@media (max-width: 620px) {
+  .home-page .nav-lang {
+    display: flex !important;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-block: 0.25rem;
+  }
+
+  .home-page .nav-lang a {
+    min-width: 2.75rem;
+    justify-content: center;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
