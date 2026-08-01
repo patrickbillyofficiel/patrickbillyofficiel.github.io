@@ -2,6 +2,17 @@
 (function () {
   "use strict";
 
+  function loadAccessibilityOptions() {
+    if (document.querySelector('script[data-a11y-options-loader], script[src$="accessibility-options.js"]')) return;
+    const script = document.createElement("script");
+    script.src = "/assets/js/accessibility-options.js";
+    script.defer = true;
+    script.dataset.a11yOptionsLoader = "true";
+    document.head.appendChild(script);
+  }
+
+  loadAccessibilityOptions();
+
   document.addEventListener("DOMContentLoaded", function () {
     const buttons = document.querySelectorAll(".nav-toggle");
 
