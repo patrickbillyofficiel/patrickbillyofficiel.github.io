@@ -20,9 +20,15 @@
     "http://127.0.0.1:4173/pages/demande-devis.html",
     "http://127.0.0.1:4173/pages/bio.html",
     "http://127.0.0.1:4173/pages/competences.html",
+    "http://127.0.0.1:4173/pages/systemes.html",
+    "http://127.0.0.1:4173/pages/entreprises-organismes.html",
+    "http://127.0.0.1:4173/pages/blog.html",
+    "http://127.0.0.1:4173/pages/debats.html",
+    "http://127.0.0.1:4173/pages/ldl.html",
     "http://127.0.0.1:4173/pages/cv-ia.html",
     "http://127.0.0.1:4173/pages/rgaa.html",
     "http://127.0.0.1:4173/pages/accessibilite.html",
+    "http://127.0.0.1:4173/portfolio/index.html",
     "http://127.0.0.1:4173/portfolio/contact.html",
     "http://127.0.0.1:4173/404.html"
   ]
