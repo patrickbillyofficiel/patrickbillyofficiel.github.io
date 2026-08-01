@@ -54,6 +54,23 @@
     }
   }
 
+  function normalizeLanguage(language) {
+    const normalized = language.toLowerCase();
+    const languageMap = {
+      fr: "fr-FR",
+      en: "en-GB",
+      es: "es-ES",
+      de: "de-DE",
+      mg: "mg-MG"
+    };
+
+    if (normalized.includes("-")) {
+      return language;
+    }
+
+    return languageMap[normalized] || language;
+  }
+
   function isExcluded(element) {
     return Boolean(
       element.closest(
@@ -157,6 +174,7 @@
   async function loadSelectedPage() {
     stopReading("");
     blocks = [];
+    loadedUrl = "";
     preview.replaceChildren();
     previewTitle.textContent = "Aperçu du contenu chargé";
     setButtons("stopped");
@@ -183,7 +201,7 @@
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, "text/html");
       const lang = doc.documentElement.getAttribute("lang") || "fr";
-      currentLanguage = lang.includes("-") ? lang : lang + "-FR";
+      currentLanguage = normalizeLanguage(lang);
       blocks = extractBlocks(doc);
 
       if (!blocks.length) {
@@ -198,7 +216,8 @@
         preview.appendChild(paragraph);
       });
 
-      const sourceTitle = doc.querySelector("h1")?.textContent.trim() || doc.title || "Page sélectionnée";
+      const sourceHeading = doc.querySelector("h1");
+      const sourceTitle = sourceHeading ? sourceHeading.textContent.trim() : (doc.title || "Page sélectionnée");
       previewTitle.textContent = "Aperçu : " + sourceTitle;
       setButtons("stopped");
       setStatus(blocks.length + " partie(s) de texte chargée(s). Vous pouvez commencer la lecture.");
@@ -219,6 +238,7 @@
     if (loadedUrl) {
       stopReading("La page sélectionnée a changé. Chargez-la avant de lancer la lecture.");
       blocks = [];
+      loadedUrl = "";
       preview.replaceChildren();
       setButtons("stopped");
     }
