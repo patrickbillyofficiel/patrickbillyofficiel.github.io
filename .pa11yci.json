@@ -2,7 +2,7 @@
   "defaults": {
     "standard": "WCAG2AA",
     "timeout": 30000,
-    "wait": 500,
+    "wait": 800,
     "chromeLaunchConfig": {
       "args": ["--no-sandbox", "--disable-setuid-sandbox"]
     }
@@ -20,6 +20,8 @@
     "http://127.0.0.1:4173/pages/demande-devis.html",
     "http://127.0.0.1:4173/pages/lecture-orale.html",
     "http://127.0.0.1:4173/pages/plan-du-site.html",
+    "http://127.0.0.1:4173/pages/schema-pluriannuel-accessibilite.html",
+    "http://127.0.0.1:4173/pages/plan-actions-accessibilite-2026.html",
     "http://127.0.0.1:4173/pages/bio.html",
     "http://127.0.0.1:4173/pages/competences.html",
     "http://127.0.0.1:4173/pages/systemes.html",
@@ -30,6 +32,9 @@
     "http://127.0.0.1:4173/pages/cv-ia.html",
     "http://127.0.0.1:4173/pages/rgaa.html",
     "http://127.0.0.1:4173/pages/accessibilite.html",
+    "http://127.0.0.1:4173/pages/mentions-legales.html",
+    "http://127.0.0.1:4173/pages/confidentialite.html",
+    "http://127.0.0.1:4173/pages/conditions-generales-intervention.html",
     "http://127.0.0.1:4173/portfolio/index.html",
     "http://127.0.0.1:4173/portfolio/contact.html",
     "http://127.0.0.1:4173/404.html"
