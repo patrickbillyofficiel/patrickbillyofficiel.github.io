@@ -36,10 +36,13 @@ Options proposées :
 - taille du texte : 100 %, 112,5 %, 125 %, 150 % ou 200 % ;
 - contraste renforcé noir sur blanc ;
 - mode sombre renforcé ;
+- curseur agrandi ;
 - police système simple sans empattement ;
 - espacement renforcé des lettres, mots et lignes ;
 - alignement à gauche ;
 - largeur de lecture limitée ;
+- guide horizontal suivant le pointeur ;
+- titres de niveaux 1 à 3 renforcés ;
 - liens textuels renforcés ;
 - focus clavier renforcé ;
 - réduction des animations ;
@@ -72,6 +75,7 @@ Le contrôle évite les doublons et ne modifie pas les pages déjà équipées.
 - focus clavier visible et contrasté ;
 - option de focus renforcé ;
 - cibles interactives agrandies ;
+- option de curseur agrandi ;
 - `aria-current` utilisé pour la page active ;
 - menu mobile pilotable au clavier et fermeture avec Échap ;
 - choix de langue conservé sur petit écran ;
@@ -88,7 +92,7 @@ Le contrôle évite les doublons et ne modifie pas les pages déjà équipées.
 - option de suppression des animations ;
 - prise en compte du mode de couleurs forcées ;
 - retour à la ligne et redimensionnement du texte améliorés ;
-- options de taille, contraste, espacement et largeur de lecture.
+- options de taille, contraste, espacement, largeur de lecture, guide et titres renforcés.
 
 ### Formulaires et scripts
 
