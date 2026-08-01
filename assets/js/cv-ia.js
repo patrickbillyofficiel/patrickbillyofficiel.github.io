@@ -2,38 +2,25 @@
 (function () {
   "use strict";
 
+  if (!document.querySelector('script[data-a11y-options-loader], script[src$="accessibility-options.js"]')) {
+    const a11yScript = document.createElement("script");
+    a11yScript.src = "/assets/js/accessibility-options.js";
+    a11yScript.defer = true;
+    a11yScript.dataset.a11yOptionsLoader = "true";
+    document.head.appendChild(a11yScript);
+  }
+
   const domains = [
-    {
-      name: "Accessibilité numérique",
-      keywords: ["accessibilité", "accessible", "rgaa", "wcag", "handicap", "inclusion", "clavier", "lecteur d’écran"]
-    },
-    {
-      name: "Formation et pédagogie",
-      keywords: ["formation", "formateur", "pédagogie", "apprentissage", "atelier", "accompagnement", "animation"]
-    },
-    {
-      name: "Intelligence artificielle",
-      keywords: ["intelligence artificielle", "ia", "automatisation", "prompt", "chatgpt", "assistant"]
-    },
-    {
-      name: "Web et contenus numériques",
-      keywords: ["html", "css", "javascript", "wordpress", "web", "seo", "numérique", "site"]
-    },
-    {
-      name: "Design et communication",
-      keywords: ["design", "graphisme", "illustrator", "photoshop", "indesign", "communication", "ux", "interface"]
-    },
-    {
-      name: "Emploi et recrutement",
-      keywords: ["recrutement", "rh", "emploi", "candidat", "entretien", "compétence", "insertion"]
-    }
+    { name: "Accessibilité numérique", keywords: ["accessibilité", "accessible", "rgaa", "wcag", "handicap", "inclusion", "clavier", "lecteur d’écran"] },
+    { name: "Formation et pédagogie", keywords: ["formation", "formateur", "pédagogie", "apprentissage", "atelier", "accompagnement", "animation"] },
+    { name: "Intelligence artificielle", keywords: ["intelligence artificielle", "ia", "automatisation", "prompt", "chatgpt", "assistant"] },
+    { name: "Web et contenus numériques", keywords: ["html", "css", "javascript", "wordpress", "web", "seo", "numérique", "site"] },
+    { name: "Design et communication", keywords: ["design", "graphisme", "illustrator", "photoshop", "indesign", "communication", "ux", "interface"] },
+    { name: "Emploi et recrutement", keywords: ["recrutement", "rh", "emploi", "candidat", "entretien", "compétence", "insertion"] }
   ];
 
   const normalize = function (value) {
-    return String(value || "")
-      .toLocaleLowerCase("fr")
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
+    return String(value || "").toLocaleLowerCase("fr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   };
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -48,22 +35,13 @@
     const body = document.getElementById("analysis-table-body");
     const clearButton = document.getElementById("clear-analysis");
 
-    const showStatus = function (message) {
-      status.textContent = message;
-      status.hidden = false;
-    };
-
-    const clearError = function () {
-      offer.removeAttribute("aria-invalid");
-      error.hidden = true;
-    };
-
+    const showStatus = function (message) { status.textContent = message; status.hidden = false; };
+    const clearError = function () { offer.removeAttribute("aria-invalid"); error.hidden = true; };
     offer.addEventListener("input", clearError);
 
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       clearError();
-
       const rawText = offer.value.trim();
       if (rawText.length < 20) {
         offer.setAttribute("aria-invalid", "true");
@@ -75,16 +53,9 @@
 
       const text = normalize(rawText);
       const findings = domains.map(function (domain) {
-        const matched = domain.keywords.filter(function (keyword) {
-          return text.includes(normalize(keyword));
-        });
-        return { name: domain.name, matched: matched };
+        return { name: domain.name, matched: domain.keywords.filter(function (keyword) { return text.includes(normalize(keyword)); }) };
       });
-
-      const relevant = findings.filter(function (item) {
-        return item.matched.length > 0;
-      });
-
+      const relevant = findings.filter(function (item) { return item.matched.length > 0; });
       body.replaceChildren();
 
       findings.forEach(function (item) {
@@ -92,10 +63,8 @@
         const domainCell = document.createElement("th");
         const findingCell = document.createElement("td");
         const nextCell = document.createElement("td");
-
         domainCell.scope = "row";
         domainCell.textContent = item.name;
-
         if (item.matched.length) {
           findingCell.textContent = "Termes repérés : " + item.matched.join(", ") + ".";
           nextCell.textContent = "Vérifier les missions, outils, résultats attendus et aménagements nécessaires.";
@@ -103,16 +72,13 @@
           findingCell.textContent = "Aucun terme explicite repéré.";
           nextCell.textContent = "Demander une précision plutôt que conclure à une absence de compétence.";
         }
-
         row.append(domainCell, findingCell, nextCell);
         body.appendChild(row);
       });
 
-      if (relevant.length) {
-        summary.textContent = "L’offre mentionne " + relevant.length + " domaine" + (relevant.length > 1 ? "s" : "") + " proche" + (relevant.length > 1 ? "s" : "") + " du profil présenté. Cette détection par mots-clés doit être vérifiée par un humain et complétée par une mise en situation accessible.";
-      } else {
-        summary.textContent = "Aucun domaine n’a été repéré automatiquement. Cela ne signifie pas que le profil est inadapté : les formulations de l’offre peuvent être différentes. Une lecture humaine et un échange restent nécessaires.";
-      }
+      summary.textContent = relevant.length
+        ? "L’offre mentionne " + relevant.length + " domaine" + (relevant.length > 1 ? "s" : "") + " proche" + (relevant.length > 1 ? "s" : "") + " du profil présenté. Cette détection par mots-clés doit être vérifiée par un humain et complétée par une mise en situation accessible."
+        : "Aucun domaine n’a été repéré automatiquement. Cela ne signifie pas que le profil est inadapté : les formulations de l’offre peuvent être différentes. Une lecture humaine et un échange restent nécessaires.";
 
       result.hidden = false;
       showStatus("Analyse locale terminée. Le récapitulatif est disponible après le formulaire.");
