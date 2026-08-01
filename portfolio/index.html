@@ -1,202 +1,55 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Portfolio · Patrick Billy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Portfolio de Patrick Billy : accessibilité numérique, design inclusif, IA appliquée, solutions low-tech/offline. Projets concrets et résultats.">
-
-  <link rel="stylesheet" href="assets/css/portfolio.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio – Patrick Billy</title>
+  <meta name="description" content="Portfolio de Patrick Billy : accessibilité numérique, IA inclusive et solutions web sobres ou hors ligne." />
+  <link rel="stylesheet" href="assets/css/portfolio.css" />
 </head>
-
 <body>
-  <a href="#main" class="skiplink">Aller au contenu principal</a>
-
+  <a class="skiplink" href="#main">Aller au contenu principal</a>
   <header class="site-header" role="banner">
-  <nav class="nav" aria-label="Navigation principale">
-    <ul class="nav-main">
-      <li><a href="/">Accueil</a></li>
-      <li><a href="/bios/bio-fr.html">Bio</a></li>
-      <li><a href="pages/competences.html">Compétences</a></li>
-      <li><a href="/portfolio/index.html">Portfolio</a></li>
-      <li><a href="pages/rgaa.html">RGAA+++++</a></li>
-      <li><a href="/portfolio/contact.html">Contact</a></li>
-    </ul>
-
-    <ul class="nav-lang" aria-label="Langues">
-      <li><a href="lang/fr/index.html" lang="fr">FR</a></li>
-      <li><a href="lang/en/index.html" lang="en">EN</a></li>
-      <li><a href="lang/es/index.html" lang="es">ES</a></li>
-      <li><a href="lang/de/index.html" lang="de">DE</a></li>
-      <li><a href="lang/mg/index.html" lang="mg">MG</a></li>
-    </ul>
-  </nav>
-</header>
-
-  <main id="main" tabindex="-1">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container">
-        <p class="kicker">Portfolio (séparé du site officiel)</p>
-        <h1 id="hero-title">Outils simples, robustes, accessibles — pensés pour le terrain.</h1>
-        <p class="lead">
-          Je travaille avec des contraintes réelles : handicap, usage en conditions imparfaites,
-          équipes pressées, infrastructures limitées. Je fais du numérique qui sert, pas du numérique qui brille.
-        </p>
-
-        <div class="actions">
-          <a class="btn btn-primary" href="projets.html">Voir les projets</a>
-          <a class="btn btn-outline" href="contact.html">Me contacter</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-tight" aria-labelledby="proofs-title">
-      <div class="container">
-        <h2 id="proofs-title">3 preuves rapides</h2>
-
-        <div class="grid grid-3">
-          <article class="card">
-            <div class="card-inner">
-              <h3>Accessibilité (RGAA / WCAG)</h3>
-              <p class="muted">Audit, corrections, re-tests, lecteur d’écran, clavier. On vise le réel, pas le PDF décoratif.</p>
-              <div class="meta" aria-label="Mots-clés">
-                <span class="badge">Audit</span>
-                <span class="badge">Backlog</span>
-                <span class="badge">Re-test</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-inner">
-              <h3>Low-tech &amp; offline</h3>
-              <p class="muted">Modules web utilisables sans réseau : clé USB, intranet, environnements contraints.</p>
-              <div class="meta" aria-label="Mots-clés">
-                <span class="badge">Robuste</span>
-                <span class="badge">Simple</span>
-                <span class="badge">Maintenable</span>
-              </div>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-inner">
-              <h3>IA appliquée (utile)</h3>
-              <p class="muted">Assistants pédagogiques pour expliquer, guider, rassurer. Pas de “wahou”, du concret.</p>
-              <div class="meta" aria-label="Mots-clés">
-                <span class="badge">Pédagogie</span>
-                <span class="badge">Guidance</span>
-                <span class="badge">Garde-fous</span>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <hr class="hr" aria-hidden="true">
-      </div>
-    </section>
-
-    <section class="section-tight" aria-labelledby="featured-title">
-      <div class="container">
-        <h2 id="featured-title">Projets en vedette</h2>
-
-        <div class="grid grid-2">
-          <article class="card project-card" data-tags="low-tech,accessibilite">
-            <div class="card-inner">
-              <h3>Mini-WTD</h3>
-              <p>Simulation de poste et pistes d’aménagement : simple, utilisable, centré personne.</p>
-              <div class="meta" aria-label="Mots-clés">
-                <span class="badge">Low-tech</span>
-                <span class="badge">Inclusion</span>
-                <span class="badge">Offline</span>
-              </div>
-              <p class="more"><a class="btn btn-outline" href="projets/mini-wtd.html">Voir le projet →</a></p>
-            </div>
-          </article>
-
-          <article class="card project-card" data-tags="ia,formation">
-            <div class="card-inner">
-              <h3>Assistant IA (RH / formation)</h3>
-              <p>Un assistant qui reformule, explique et guide — sans noyer les gens.</p>
-              <div class="meta" aria-label="Mots-clés">
-                <span class="badge">IA appliquée</span>
-                <span class="badge">Pédagogie</span>
-                <span class="badge">Clarté</span>
-              </div>
-              <p class="more"><a class="btn btn-outline" href="projets/assistant-ia.html">Voir le projet →</a></p>
-            </div>
-          </article>
-
-          <article class="card project-card" data-tags="accessibilite">
-            <div class="card-inner">
-              <h3>Audit RGAA + backlog correctifs</h3>
-              <p>Audit + priorisation + tickets exploitables. Le but : corriger, pas “se couvrir”.</p>
-              <div class="meta" aria-label="Mots-clés">
-                <span class="badge">RGAA</span>
-                <span class="badge">WCAG</span>
-                <span class="badge">Re-test</span>
-              </div>
-              <p class="more"><a class="btn btn-outline" href="projets/audit-rgaa.html">Voir le projet →</a></p>
-            </div>
-          </article>
-
-          <article class="card project-card" data-tags="low-tech">
-            <div class="card-inner">
-              <h3>Module offline (clé USB)</h3>
-              <p>Déploiement simple : copie, ouverture, ça tourne. Pas besoin de cloud pour exister.</p>
-              <div class="meta" aria-label="Mots-clés">
-                <span class="badge">Offline</span>
-                <span class="badge">USB</span>
-                <span class="badge">Intranet</span>
-              </div>
-              <p class="more"><a class="btn btn-outline" href="projets/offline-usb.html">Voir le projet →</a></p>
-            </div>
-          </article>
-        </div>
-
-        <hr class="hr" aria-hidden="true">
-      </div>
-    </section>
-
-    <section class="section-tight" aria-labelledby="method-title">
-      <div class="container">
-        <h2 id="method-title">Méthode</h2>
-
-        <div class="kpi">
-          <div class="card"><div class="card-inner"><h3>1. Diagnostiquer</h3><p class="muted">Contexte, contraintes, risques. On évite les suppositions.</p></div></div>
-          <div class="card"><div class="card-inner"><h3>2. Simplifier</h3><p class="muted">UX, contenu, parcours. On enlève ce qui bloque.</p></div></div>
-          <div class="card"><div class="card-inner"><h3>3. Tester réel</h3><p class="muted">Clavier, lecteur d’écran, usage terrain. La vérité sort vite.</p></div></div>
-          <div class="card"><div class="card-inner"><h3>4. Livrer</h3><p class="muted">Outil + doc + re-tests. Et c’est maintenable.</p></div></div>
-          <div class="card"><div class="card-inner"><h3>5. Transmettre</h3><p class="muted">Check-lists, formation courte, autonomie côté équipe.</p></div></div>
-          <div class="card"><div class="card-inner"><h3>6. Itérer</h3><p class="muted">Petits cycles, résultats visibles. Pas de tunnel de 6 mois.</p></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-tight" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="callout">
-          <h2 id="cta-title">Tu veux un outil qui marche vraiment ?</h2>
-          <p class="muted">Tu me donnes ton contexte, tes contraintes, ton public. Je te réponds avec du concret.</p>
-          <div class="actions">
-            <a class="btn btn-primary" href="contact.html">Me contacter</a>
-            <a class="btn btn-outline" href="../index.html">Retour au site officiel</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-      <p>© <span id="year"></span> Patrick Billy — Portfolio.</p>
-      <p class="small">Si ça ne marche pas au clavier, ça ne marche pas.</p>
-      <p><a href="#main">Retour en haut</a></p>
+    <div class="container header-inner">
+      <div class="brand"><a href="../index.html">Élan pour Tous</a><small>Portfolio de Patrick Billy</small></div>
+      <nav class="nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="../index.html">Accueil</a></li>
+          <li><a href="../pages/bio.html">Bio</a></li>
+          <li><a href="../pages/competences.html">Compétences</a></li>
+          <li><a href="./index.html" aria-current="page">Portfolio</a></li>
+          <li><a href="../pages/rgaa.html">RGAA</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="portfolio-title"><div class="container">
+      <p class="kicker">Projets et démonstrations</p>
+      <h1 id="portfolio-title">Des outils simples, accessibles et contrôlables</h1>
+      <p class="lead">Les projets sont présentés comme des démonstrations ou des travaux en cours. Leur niveau de conformité doit être vérifié séparément avant toute mise en production.</p>
+      <div class="actions"><a class="btn btn-primary" href="projets.html">Voir les projets</a><a class="btn btn-outline" href="contact.html">Contacter Patrick Billy</a></div>
+    </div></section>
+    <section class="section-tight" aria-labelledby="skills-title"><div class="container">
+      <h2 id="skills-title">Domaines de travail</h2>
+      <div class="grid grid-3">
+        <article class="card"><div class="card-inner"><h3>Accessibilité numérique</h3><p>Repérage des obstacles, structure HTML, navigation clavier, formulaires et préparation d’un audit RGAA.</p></div></article>
+        <article class="card"><div class="card-inner"><h3>Solutions sobres et hors ligne</h3><p>Pages statiques, ressources sur clé USB et outils limitant les dépendances réseau.</p></div></article>
+        <article class="card"><div class="card-inner"><h3>IA inclusive</h3><p>Reformulation, transcription et organisation avec validation humaine et protection des données.</p></div></article>
+      </div>
+    </div></section>
+    <section class="section-tight" aria-labelledby="projects-title"><div class="container">
+      <h2 id="projects-title">Projets présentés</h2>
+      <div class="grid grid-2">
+        <article class="card project-card"><div class="card-inner"><h3>Mini-WTD</h3><p>Concept de mise en situation et d’étude des adaptations de poste.</p><p class="more"><a class="btn btn-outline" href="projets/mini-wtd.html">Consulter Mini-WTD</a></p></div></article>
+        <article class="card project-card"><div class="card-inner"><h3>Assistant IA</h3><p>Démonstration d’aide à la compréhension, sans décision automatique.</p><p class="more"><a class="btn btn-outline" href="projets/assistant-ia.html">Consulter l’assistant IA</a></p></div></article>
+        <article class="card project-card"><div class="card-inner"><h3>Pré-audit RGAA</h3><p>Exemple de repérage, priorisation et documentation des corrections.</p><p class="more"><a class="btn btn-outline" href="projets/audit-rgaa.html">Consulter le projet d’audit</a></p></div></article>
+        <article class="card project-card"><div class="card-inner"><h3>Module hors ligne</h3><p>Ressources web utilisables localement lorsque la connexion est faible ou absente.</p><p class="more"><a class="btn btn-outline" href="projets/offline-usb.html">Consulter le module hors ligne</a></p></div></article>
+      </div>
+    </div></section>
+    <section class="section-tight" aria-labelledby="accessibility-note-title"><div class="container"><div class="callout"><h2 id="accessibility-note-title">État d’accessibilité</h2><p>Le site principal reste déclaré non conforme tant que l’audit RGAA exhaustif n’est pas terminé. Les pages du portfolio font partie des contenus historiques encore à contrôler manuellement.</p><p><a href="../pages/accessibilite.html">Lire la déclaration d’accessibilité</a>.</p></div></div></section>
+  </main>
+  <footer class="footer" role="contentinfo"><div class="container"><p>© Patrick Billy — Portfolio.</p><p><a href="../pages/accessibilite.html">Accessibilité : non conforme</a> · <a href="../pages/mentions-legales.html">Mentions légales</a></p></div></footer>
 </body>
 </html>
