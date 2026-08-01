@@ -1,9 +1,24 @@
 (function () {
   "use strict";
 
-  const KEY = "elan-a11y-v1";
-  const defaults = { size: "100", contrast: "default", spacing: false, simpleFont: false, links: false, focus: false, motion: false, left: false, narrow: false };
+  const KEY = "elan-a11y-v2";
+  const defaults = {
+    size: "100",
+    contrast: "default",
+    spacing: false,
+    simpleFont: false,
+    links: false,
+    focus: false,
+    motion: false,
+    left: false,
+    narrow: false,
+    guide: false,
+    largeCursor: false,
+    headings: false
+  };
   const root = document.documentElement;
+  let guideElement = null;
+  let guideHandler = null;
 
   function loadCss() {
     if (document.querySelector("[data-a11y-options-css]")) return;
@@ -15,12 +30,40 @@
   }
 
   function read() {
-    try { return Object.assign({}, defaults, JSON.parse(localStorage.getItem(KEY) || "{}")); }
-    catch (_) { return Object.assign({}, defaults); }
+    try {
+      const legacy = JSON.parse(localStorage.getItem("elan-a11y-v1") || "{}");
+      const current = JSON.parse(localStorage.getItem(KEY) || "{}");
+      return Object.assign({}, defaults, legacy, current);
+    } catch (_) {
+      return Object.assign({}, defaults);
+    }
   }
 
-  function save(value) { try { localStorage.setItem(KEY, JSON.stringify(value)); } catch (_) {} }
-  function toggle(name, active) { root.classList.toggle(name, Boolean(active)); }
+  function save(value) {
+    try { localStorage.setItem(KEY, JSON.stringify(value)); } catch (_) {}
+  }
+
+  function toggle(name, active) {
+    root.classList.toggle(name, Boolean(active));
+  }
+
+  function setGuide(active) {
+    if (active && !guideElement) {
+      guideElement = document.createElement("div");
+      guideElement.className = "a11y-reading-guide";
+      guideElement.setAttribute("aria-hidden", "true");
+      document.body.appendChild(guideElement);
+      guideHandler = function (event) {
+        guideElement.style.top = event.clientY + "px";
+      };
+      document.addEventListener("pointermove", guideHandler);
+    } else if (!active && guideElement) {
+      document.removeEventListener("pointermove", guideHandler);
+      guideElement.remove();
+      guideElement = null;
+      guideHandler = null;
+    }
+  }
 
   function apply(p) {
     const sizes = { "100": "1", "112": "1.125", "125": "1.25", "150": "1.5", "200": "2" };
@@ -35,6 +78,9 @@
     toggle("a11y-no-motion", p.motion);
     toggle("a11y-left-align", p.left);
     toggle("a11y-narrow-reading", p.narrow);
+    toggle("a11y-large-cursor", p.largeCursor);
+    toggle("a11y-highlight-headings", p.headings);
+    setGuide(p.guide);
   }
 
   function values(panel) {
@@ -47,7 +93,10 @@
       focus: panel.querySelector("#a11y-focus").checked,
       motion: panel.querySelector("#a11y-motion").checked,
       left: panel.querySelector("#a11y-left").checked,
-      narrow: panel.querySelector("#a11y-narrow").checked
+      narrow: panel.querySelector("#a11y-narrow").checked,
+      guide: panel.querySelector("#a11y-guide").checked,
+      largeCursor: panel.querySelector("#a11y-cursor").checked,
+      headings: panel.querySelector("#a11y-headings").checked
     };
   }
 
@@ -61,6 +110,9 @@
     panel.querySelector("#a11y-motion").checked = p.motion;
     panel.querySelector("#a11y-left").checked = p.left;
     panel.querySelector("#a11y-narrow").checked = p.narrow;
+    panel.querySelector("#a11y-guide").checked = p.guide;
+    panel.querySelector("#a11y-cursor").checked = p.largeCursor;
+    panel.querySelector("#a11y-headings").checked = p.headings;
   }
 
   function init() {
@@ -88,12 +140,15 @@
           <fieldset><legend>Affichage</legend>
             <div class="a11y-options-select"><label for="a11y-size">Taille du texte</label><select id="a11y-size"><option value="100">100 %</option><option value="112">112,5 %</option><option value="125">125 %</option><option value="150">150 %</option><option value="200">200 %</option></select></div>
             <div class="a11y-options-select"><label for="a11y-contrast">Contraste</label><select id="a11y-contrast"><option value="default">Présentation du site</option><option value="high">Noir sur blanc renforcé</option><option value="dark">Mode sombre renforcé</option></select></div>
+            <label class="a11y-option-row"><input id="a11y-cursor" type="checkbox"><span>Curseur agrandi</span></label>
           </fieldset>
           <fieldset><legend>Lecture et compréhension</legend>
             <label class="a11y-option-row"><input id="a11y-font" type="checkbox"><span>Police simple sans empattement</span></label>
             <label class="a11y-option-row"><input id="a11y-spacing" type="checkbox"><span>Espacement renforcé du texte</span></label>
             <label class="a11y-option-row"><input id="a11y-left" type="checkbox"><span>Alignement des textes à gauche</span></label>
             <label class="a11y-option-row"><input id="a11y-narrow" type="checkbox"><span>Largeur de lecture limitée</span></label>
+            <label class="a11y-option-row"><input id="a11y-guide" type="checkbox"><span>Guide horizontal suivant le pointeur</span></label>
+            <label class="a11y-option-row"><input id="a11y-headings" type="checkbox"><span>Titres renforcés</span></label>
           </fieldset>
           <fieldset><legend>Navigation</legend>
             <label class="a11y-option-row"><input id="a11y-links" type="checkbox"><span>Liens renforcés</span></label>
