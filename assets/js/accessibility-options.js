@@ -2,18 +2,7 @@
   "use strict";
 
   const KEY = "elan-a11y-v1";
-  const defaults = {
-    size: "100",
-    contrast: "default",
-    spacing: false,
-    simpleFont: false,
-    links: false,
-    focus: false,
-    motion: false,
-    left: false,
-    narrow: false
-  };
-
+  const defaults = { size: "100", contrast: "default", spacing: false, simpleFont: false, links: false, focus: false, motion: false, left: false, narrow: false };
   const root = document.documentElement;
 
   function loadCss() {
@@ -26,20 +15,12 @@
   }
 
   function read() {
-    try {
-      return Object.assign({}, defaults, JSON.parse(localStorage.getItem(KEY) || "{}"));
-    } catch (_) {
-      return Object.assign({}, defaults);
-    }
+    try { return Object.assign({}, defaults, JSON.parse(localStorage.getItem(KEY) || "{}")); }
+    catch (_) { return Object.assign({}, defaults); }
   }
 
-  function save(value) {
-    try { localStorage.setItem(KEY, JSON.stringify(value)); } catch (_) {}
-  }
-
-  function toggle(name, active) {
-    root.classList.toggle(name, Boolean(active));
-  }
+  function save(value) { try { localStorage.setItem(KEY, JSON.stringify(value)); } catch (_) {} }
+  function toggle(name, active) { root.classList.toggle(name, Boolean(active)); }
 
   function apply(p) {
     const sizes = { "100": "1", "112": "1.125", "125": "1.25", "150": "1.5", "200": "2" };
@@ -83,17 +64,20 @@
   }
 
   function init() {
+    if (document.querySelector(".a11y-options-trigger")) return;
     loadCss();
     const current = read();
     apply(current);
 
     const trigger = document.createElement("button");
     trigger.type = "button";
+    trigger.lang = "fr";
     trigger.className = "a11y-options-trigger";
     trigger.textContent = "Options d’accessibilité";
     trigger.setAttribute("aria-haspopup", "dialog");
 
     const dialog = document.createElement("dialog");
+    dialog.lang = "fr";
     dialog.className = "a11y-options-dialog";
     dialog.setAttribute("aria-labelledby", "a11y-options-title");
     dialog.innerHTML = `
@@ -101,30 +85,22 @@
         <h2 id="a11y-options-title">Options d’accessibilité</h2>
         <p>Ces préférences complètent les réglages du navigateur. Elles ne remplacent pas un audit RGAA.</p>
         <form method="dialog">
-          <fieldset>
-            <legend>Affichage</legend>
+          <fieldset><legend>Affichage</legend>
             <div class="a11y-options-select"><label for="a11y-size">Taille du texte</label><select id="a11y-size"><option value="100">100 %</option><option value="112">112,5 %</option><option value="125">125 %</option><option value="150">150 %</option><option value="200">200 %</option></select></div>
             <div class="a11y-options-select"><label for="a11y-contrast">Contraste</label><select id="a11y-contrast"><option value="default">Présentation du site</option><option value="high">Noir sur blanc renforcé</option><option value="dark">Mode sombre renforcé</option></select></div>
           </fieldset>
-          <fieldset>
-            <legend>Lecture et compréhension</legend>
+          <fieldset><legend>Lecture et compréhension</legend>
             <label class="a11y-option-row"><input id="a11y-font" type="checkbox"><span>Police simple sans empattement</span></label>
             <label class="a11y-option-row"><input id="a11y-spacing" type="checkbox"><span>Espacement renforcé du texte</span></label>
             <label class="a11y-option-row"><input id="a11y-left" type="checkbox"><span>Alignement des textes à gauche</span></label>
             <label class="a11y-option-row"><input id="a11y-narrow" type="checkbox"><span>Largeur de lecture limitée</span></label>
           </fieldset>
-          <fieldset>
-            <legend>Navigation</legend>
+          <fieldset><legend>Navigation</legend>
             <label class="a11y-option-row"><input id="a11y-links" type="checkbox"><span>Liens renforcés</span></label>
             <label class="a11y-option-row"><input id="a11y-focus" type="checkbox"><span>Focus clavier renforcé</span></label>
             <label class="a11y-option-row"><input id="a11y-motion" type="checkbox"><span>Réduire les animations</span></label>
           </fieldset>
-          <div class="a11y-options-actions">
-            <button class="a11y-options-primary" id="a11y-apply" type="button">Appliquer et enregistrer</button>
-            <button id="a11y-reset" type="button">Réinitialiser</button>
-            <a href="/pages/lecture-orale.html">Lecture orale</a>
-            <button id="a11y-close" type="button">Fermer</button>
-          </div>
+          <div class="a11y-options-actions"><button class="a11y-options-primary" id="a11y-apply" type="button">Appliquer et enregistrer</button><button id="a11y-reset" type="button">Réinitialiser</button><a href="/pages/lecture-orale.html">Lecture orale</a><button id="a11y-close" type="button">Fermer</button></div>
           <p class="a11y-options-status" id="a11y-status" role="status" aria-live="polite" hidden></p>
         </form>
       </div>`;
