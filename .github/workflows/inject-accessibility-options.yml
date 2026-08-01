@@ -1,0 +1,55 @@
+name: Déployer les options d’accessibilité
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inject:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Ajouter le panneau aux pages HTML manquantes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          marker = 'accessibility-options.js'
+          script = '  <script src="/assets/js/accessibility-options.js" defer></script>\n'
+          changed = []
+
+          for path in Path('.').rglob('*.html'):
+              if any(part in {'.git', 'node_modules', '_site'} for part in path.parts):
+                  continue
+              text = path.read_text(encoding='utf-8')
+              if marker in text or '</body>' not in text:
+                  continue
+              text = text.replace('</body>', script + '</body>', 1)
+              path.write_text(text, encoding='utf-8')
+              changed.append(str(path))
+
+          print(f'{len(changed)} page(s) mise(s) à jour.')
+          for item in changed:
+              print(item)
+          PY
+
+      - name: Enregistrer les pages modifiées
+        run: |
+          if git diff --quiet; then
+            echo "Toutes les pages sont déjà équipées."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- '*.html'
+          git commit -m "Ajouter les options d’accessibilité à toutes les pages [skip ci]"
+          git push
