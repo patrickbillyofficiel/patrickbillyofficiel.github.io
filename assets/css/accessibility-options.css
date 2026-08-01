@@ -5,28 +5,12 @@
   --a11y-line-height: 1.6;
   --a11y-letter-spacing: normal;
   --a11y-word-spacing: normal;
-  --a11y-content-width: 100%;
 }
 
-html {
-  font-size: calc(100% * var(--a11y-font-scale));
-}
-
-body {
-  line-height: var(--a11y-line-height);
-  letter-spacing: var(--a11y-letter-spacing);
-  word-spacing: var(--a11y-word-spacing);
-}
-
-html.a11y-font-simple body {
-  font-family: Arial, Verdana, Tahoma, sans-serif !important;
-}
-
-html.a11y-text-wide body {
-  --a11y-line-height: 2;
-  --a11y-letter-spacing: 0.04em;
-  --a11y-word-spacing: 0.12em;
-}
+html { font-size: calc(100% * var(--a11y-font-scale)); }
+body { line-height: var(--a11y-line-height); letter-spacing: var(--a11y-letter-spacing); word-spacing: var(--a11y-word-spacing); }
+html.a11y-font-simple body { font-family: Arial, Verdana, Tahoma, sans-serif !important; }
+html.a11y-text-wide body { --a11y-line-height: 2; --a11y-letter-spacing: 0.04em; --a11y-word-spacing: 0.12em; }
 
 html.a11y-narrow-reading main > *,
 html.a11y-narrow-reading main section > *,
@@ -51,75 +35,38 @@ html.a11y-strong-focus :where(a, button, input, select, textarea, summary, [tabi
   box-shadow: 0 0 0 2px #111827 !important;
 }
 
+html.a11y-highlight-headings :where(h1, h2, h3) {
+  padding-inline-start: 0.45rem !important;
+  border-inline-start: 0.35rem solid #0b5cad !important;
+  text-decoration: underline !important;
+  text-decoration-thickness: 0.08em !important;
+  text-underline-offset: 0.18em !important;
+}
+
+html.a11y-large-cursor,
+html.a11y-large-cursor :where(a, button, input, select, textarea, label, summary) {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='white' stroke='black' stroke-width='2' d='M3 2l20 18-9 1 5 8-5 2-4-9-7 6z'/%3E%3C/svg%3E") 3 2, auto !important;
+}
+
 html.a11y-high-contrast,
-html.a11y-high-contrast body {
-  color: #000 !important;
-  background: #fff !important;
-}
-
-html.a11y-high-contrast :where(header, footer, main, section, article, aside, nav, div, form, fieldset) {
-  color: #000 !important;
-  background-color: #fff !important;
-  background-image: none !important;
-  box-shadow: none !important;
-}
-
-html.a11y-high-contrast :where(a, a:visited) {
-  color: #0000ee !important;
-}
-
-html.a11y-high-contrast :where(button, input, select, textarea, .btn, [class*="button"]) {
-  color: #000 !important;
-  background: #fff !important;
-  border: 3px solid #000 !important;
-}
-
-html.a11y-high-contrast :where(article, aside, .card, [class*="card"], [class*="panel"], [class*="callout"]) {
-  border: 2px solid #000 !important;
-}
+html.a11y-high-contrast body { color: #000 !important; background: #fff !important; }
+html.a11y-high-contrast :where(header, footer, main, section, article, aside, nav, div, form, fieldset) { color: #000 !important; background-color: #fff !important; background-image: none !important; box-shadow: none !important; }
+html.a11y-high-contrast :where(a, a:visited) { color: #0000ee !important; }
+html.a11y-high-contrast :where(button, input, select, textarea, .btn, [class*="button"]) { color: #000 !important; background: #fff !important; border: 3px solid #000 !important; }
+html.a11y-high-contrast :where(article, aside, .card, [class*="card"], [class*="panel"], [class*="callout"]) { border: 2px solid #000 !important; }
 
 html.a11y-dark,
-html.a11y-dark body {
-  color: #f8fafc !important;
-  background: #111827 !important;
-}
-
-html.a11y-dark :where(header, footer, main, section, article, aside, nav, div, form, fieldset) {
-  color: #f8fafc !important;
-  background-color: #111827 !important;
-  background-image: none !important;
-  box-shadow: none !important;
-}
-
-html.a11y-dark :where(h1, h2, h3, h4, h5, h6, p, li, label, legend, strong, small, span) {
-  color: inherit !important;
-}
-
-html.a11y-dark :where(a, a:visited) {
-  color: #7dd3fc !important;
-}
-
-html.a11y-dark :where(button, input, select, textarea, .btn, [class*="button"]) {
-  color: #f8fafc !important;
-  background: #1f2937 !important;
-  border-color: #f8fafc !important;
-}
-
-html.a11y-dark :where(article, aside, .card, [class*="card"], [class*="panel"], [class*="callout"]) {
-  border-color: #cbd5e1 !important;
-}
+html.a11y-dark body { color: #f8fafc !important; background: #111827 !important; }
+html.a11y-dark :where(header, footer, main, section, article, aside, nav, div, form, fieldset) { color: #f8fafc !important; background-color: #111827 !important; background-image: none !important; box-shadow: none !important; }
+html.a11y-dark :where(h1, h2, h3, h4, h5, h6, p, li, label, legend, strong, small, span) { color: inherit !important; }
+html.a11y-dark :where(a, a:visited) { color: #7dd3fc !important; }
+html.a11y-dark :where(button, input, select, textarea, .btn, [class*="button"]) { color: #f8fafc !important; background: #1f2937 !important; border-color: #f8fafc !important; }
+html.a11y-dark :where(article, aside, .card, [class*="card"], [class*="panel"], [class*="callout"]) { border-color: #cbd5e1 !important; }
 
 html.a11y-no-motion *,
 html.a11y-no-motion *::before,
-html.a11y-no-motion *::after {
-  animation: none !important;
-  transition: none !important;
-  scroll-behavior: auto !important;
-}
-
-html.a11y-left-align :where(p, li, td, th, dd, figcaption, blockquote) {
-  text-align: left !important;
-}
+html.a11y-no-motion *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+html.a11y-left-align :where(p, li, td, th, dd, figcaption, blockquote) { text-align: left !important; }
 
 .a11y-options-trigger {
   position: fixed;
@@ -137,11 +84,8 @@ html.a11y-left-align :where(p, li, td, th, dd, figcaption, blockquote) {
   cursor: pointer;
   box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.28);
 }
-
 .a11y-options-trigger:hover,
-.a11y-options-trigger:focus-visible {
-  background: #073b72;
-}
+.a11y-options-trigger:focus-visible { background: #073b72; }
 
 .a11y-options-dialog {
   width: min(42rem, calc(100% - 2rem));
@@ -153,90 +97,20 @@ html.a11y-left-align :where(p, li, td, th, dd, figcaption, blockquote) {
   background: #fff;
   overflow: auto;
 }
-
-.a11y-options-dialog::backdrop {
-  background: rgba(15, 23, 42, 0.72);
-}
-
-.a11y-options-dialog-inner {
-  padding: 1.25rem;
-}
-
-.a11y-options-dialog h2 {
-  margin-top: 0;
-  color: #111827 !important;
-}
-
-.a11y-options-dialog fieldset {
-  margin: 1rem 0;
-  padding: 1rem;
-  border: 2px solid #64748b;
-  border-radius: 0.5rem;
-}
-
-.a11y-options-dialog legend {
-  padding-inline: 0.35rem;
-  font-weight: 800;
-}
-
-.a11y-option-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.65rem;
-  align-items: start;
-  margin-block: 0.65rem;
-}
-
-.a11y-option-row input {
-  width: 1.35rem;
-  height: 1.35rem;
-  margin-top: 0.15rem;
-}
-
-.a11y-options-select {
-  display: grid;
-  gap: 0.35rem;
-  margin-block: 0.85rem;
-}
-
-.a11y-options-select select {
-  min-height: 2.75rem;
-  padding: 0.55rem;
-  border: 2px solid #64748b;
-}
-
-.a11y-options-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-}
-
+.a11y-options-dialog::backdrop { background: rgba(15, 23, 42, 0.72); }
+.a11y-options-dialog-inner { padding: 1.25rem; }
+.a11y-options-dialog h2 { margin-top: 0; color: #111827 !important; }
+.a11y-options-dialog fieldset { margin: 1rem 0; padding: 1rem; border: 2px solid #64748b; border-radius: 0.5rem; }
+.a11y-options-dialog legend { padding-inline: 0.35rem; font-weight: 800; }
+.a11y-option-row { display: grid; grid-template-columns: auto 1fr; gap: 0.65rem; align-items: start; margin-block: 0.65rem; }
+.a11y-option-row input { width: 1.35rem; height: 1.35rem; margin-top: 0.15rem; }
+.a11y-options-select { display: grid; gap: 0.35rem; margin-block: 0.85rem; }
+.a11y-options-select select { min-height: 2.75rem; padding: 0.55rem; border: 2px solid #64748b; }
+.a11y-options-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
 .a11y-options-actions button,
-.a11y-options-actions a {
-  min-height: 2.75rem;
-  padding: 0.65rem 0.9rem;
-  border: 2px solid #0b5cad;
-  border-radius: 0.5rem;
-  color: #073b72;
-  background: #fff;
-  font: inherit;
-  font-weight: 800;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.a11y-options-actions .a11y-options-primary {
-  color: #fff;
-  background: #0b5cad;
-}
-
-.a11y-options-status {
-  margin-top: 1rem;
-  padding: 0.75rem;
-  border-left: 5px solid #087f8c;
-  background: #e7f7f5;
-}
+.a11y-options-actions a { min-height: 2.75rem; padding: 0.65rem 0.9rem; border: 2px solid #0b5cad; border-radius: 0.5rem; color: #073b72; background: #fff; font: inherit; font-weight: 800; text-decoration: none; cursor: pointer; }
+.a11y-options-actions .a11y-options-primary { color: #fff; background: #0b5cad; }
+.a11y-options-status { margin-top: 1rem; padding: 0.75rem; border-left: 5px solid #087f8c; background: #e7f7f5; }
 
 .a11y-reading-guide {
   position: fixed;
@@ -250,28 +124,18 @@ html.a11y-left-align :where(p, li, td, th, dd, figcaption, blockquote) {
 }
 
 @media (max-width: 40rem) {
-  .a11y-options-trigger {
-    right: 0.5rem;
-    bottom: 0.5rem;
-  }
-
+  .a11y-options-trigger { right: 0.5rem; bottom: 0.5rem; }
   .a11y-options-actions,
   .a11y-options-actions button,
-  .a11y-options-actions a {
-    width: 100%;
-  }
+  .a11y-options-actions a { width: 100%; }
 }
 
 @media (prefers-contrast: more) {
-  :where(a, button, input, select, textarea) {
-    border-width: 2px;
-  }
+  :where(a, button, input, select, textarea) { border-width: 2px; }
 }
 
 @media print {
   .a11y-options-trigger,
   .a11y-options-dialog,
-  .a11y-reading-guide {
-    display: none !important;
-  }
+  .a11y-reading-guide { display: none !important; }
 }
