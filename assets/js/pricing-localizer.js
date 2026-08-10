@@ -15,6 +15,15 @@
     LIC: 'faible revenu — base 25 %'
   };
 
+  const territoryNames = {
+    RE: 'La Réunion',
+    YT: 'Mayotte',
+    GP: 'Guadeloupe',
+    MQ: 'Martinique',
+    GF: 'Guyane française',
+    PM: 'Saint-Pierre-et-Miquelon'
+  };
+
   const strategicCurrencyFallbacks = {
     FR: 'EUR', RE: 'EUR', YT: 'EUR', GP: 'EUR', MQ: 'EUR', GF: 'EUR', PM: 'EUR',
     MG: 'MGA', MU: 'MUR', ZA: 'ZAR', SN: 'XOF', CI: 'XOF', CM: 'XAF', MA: 'MAD',
@@ -37,6 +46,10 @@
     maximumFractionDigits: 0
   });
 
+  const countryDisplayNames = typeof Intl.DisplayNames === 'function'
+    ? new Intl.DisplayNames(['fr'], { type: 'region' })
+    : null;
+
   const setStatus = (message, isError = false) => {
     status.textContent = message;
     status.setAttribute('role', isError ? 'alert' : 'status');
@@ -48,13 +61,23 @@
     return Math.round(value / 50) * 50;
   };
 
+  const fallbackCountry = (countryCode) => ({
+    iso2Code: countryCode,
+    name: territoryNames[countryCode] || countryDisplayNames?.of(countryCode) || countryCode,
+    incomeLevel: { id: 'HIC', value: 'Base internationale de sécurité' }
+  });
+
   const getWorldBankCountry = async (countryCode) => {
-    const response = await fetch(`https://api.worldbank.org/v2/country/${encodeURIComponent(countryCode)}?format=json`);
-    if (!response.ok) throw new Error('Classification pays indisponible');
-    const payload = await response.json();
-    const country = payload?.[1]?.[0];
-    if (!country) throw new Error('Pays non reconnu par la grille internationale');
-    return country;
+    if (territoryNames[countryCode]) return fallbackCountry(countryCode);
+
+    try {
+      const response = await fetch(`https://api.worldbank.org/v2/country/${encodeURIComponent(countryCode)}?format=json`);
+      if (!response.ok) return fallbackCountry(countryCode);
+      const payload = await response.json();
+      return payload?.[1]?.[0] || fallbackCountry(countryCode);
+    } catch (_) {
+      return fallbackCountry(countryCode);
+    }
   };
 
   const getCurrency = async (countryCode) => {
@@ -89,7 +112,7 @@
       return new Intl.NumberFormat(undefined, {
         style: 'currency',
         currency,
-        maximumFractionDigits: currency === 'MGA' ? 0 : 0
+        maximumFractionDigits: 0
       }).format(amount);
     } catch (_) {
       return `${Math.round(amount).toLocaleString('fr-FR')} ${currency}`;
@@ -208,14 +231,20 @@
       const countries = (payload?.[1] || [])
         .filter((country) => country?.region?.id && country.region.id !== '')
         .filter((country) => /^[A-Z]{2}$/.test(country.iso2Code || ''))
-        .sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+        .map((country) => ({ code: country.iso2Code, name: country.name }));
 
-      countries.forEach((country) => {
-        const option = document.createElement('option');
-        option.value = country.iso2Code;
-        option.textContent = country.name;
-        countrySelect.append(option);
+      Object.entries(territoryNames).forEach(([code, name]) => {
+        if (!countries.some((country) => country.code === code)) countries.push({ code, name });
       });
+
+      countries
+        .sort((a, b) => a.name.localeCompare(b.name, 'fr'))
+        .forEach((country) => {
+          const option = document.createElement('option');
+          option.value = country.code;
+          option.textContent = country.name;
+          countrySelect.append(option);
+        });
     } catch (_) {
       setStatus('La liste automatique des pays n’a pas pu être chargée. Le bouton GPS reste disponible.', true);
     }
