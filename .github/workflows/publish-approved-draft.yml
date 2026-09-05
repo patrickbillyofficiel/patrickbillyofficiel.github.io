@@ -40,7 +40,7 @@ jobs:
         run: |
           git config user.name "elan-pour-tous-editorial-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add pages/publications content/published content/drafts
+          git add pages/publications pages/blog.html content/published content/drafts
           git diff --cached --quiet && exit 1 || true
           git commit -m "Publication validée : mise en ligne d'un brouillon"
           git push
@@ -48,4 +48,4 @@ jobs:
       - name: Résumé
         run: |
           echo "### Publication effectuée" >> "$GITHUB_STEP_SUMMARY"
-          echo "Page créée dans pages/publications/ et brouillon archivé dans content/published/." >> "$GITHUB_STEP_SUMMARY"
+          echo "Page créée dans pages/publications/, ajoutée à la page Ressources et brouillon archivé dans content/published/." >> "$GITHUB_STEP_SUMMARY"
