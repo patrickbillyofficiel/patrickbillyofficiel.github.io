@@ -124,12 +124,13 @@ def build_page(meta: dict[str, str], body_html: str) -> tuple[str, str]:
   <header class="site-header" role="banner">
     <nav class="inner-nav" aria-label="Navigation principale">
       <a class="inner-brand" href="../../index.html"><strong>Élan pour Tous</strong><span>IA inclusive · Patrick Billy</span></a>
-      <ul class="inner-menu"><li><a href="../../index.html">Accueil</a></li><li><a href="../entreprises-organismes.html">Entreprises</a></li><li><a href="../formations.html">Formations</a></li><li><a href="../blog.html">Ressources</a></li><li><a href="../../portfolio/contact.html">Contact</a></li></ul>
+      <ul class="inner-menu"><li><a href="../../index.html">Accueil</a></li><li><a href="../ia-inclusive.html">IA inclusive</a></li><li><a href="../entreprises-organismes.html">Entreprises</a></li><li><a href="../formations.html">Formations</a></li><li><a href="../blog.html">Ressources</a></li><li><a href="../../portfolio/contact.html">Contact</a></li></ul>
     </nav>
   </header>
   <main id="main" tabindex="-1">
-    <section class="inner-hero"><div class="inner-wrap"><p class="inner-eyebrow">Publication validée · {html.escape(audience)}</p><h1>{html.escape(title)}</h1><p class="inner-lead">Patrick Billy · Élan pour Tous · Work-Test-Démo</p></div></section>
+    <section class="inner-hero"><div class="inner-wrap"><p class="inner-eyebrow">Publication validée · {html.escape(audience)}</p><h1>{html.escape(title)}</h1><p class="inner-lead">Patrick Billy · Élan pour Tous · <a href="../ia-inclusive.html">IA inclusive</a> · Work-Test-Démo</p></div></section>
     <section class="inner-section"><article class="inner-wrap inner-card">{body_html}</article></section>
+    <section class="inner-section inner-section-alt"><div class="inner-wrap"><div class="inner-callout"><h2>Approfondir l’IA inclusive</h2><p>Retrouvez les ressources de Patrick Billy et Élan pour Tous consacrées à l’accessibilité, au handicap, à la formation et aux usages responsables de l’intelligence artificielle.</p><p><a class="inner-button inner-button-primary" href="../ia-inclusive.html">Découvrir l’IA inclusive</a></p></div></div></section>
   </main>
   <footer class="site-footer" role="contentinfo"><div class="inner-wrap inner-footer"><p>© Patrick Billy — Élan pour Tous</p><p><a href="../accessibilite.html">Accessibilité</a> · <a href="../mentions-legales.html">Mentions légales</a></p></div></footer>
   <script src="../../assets/js/accessibility-options.js" defer></script>
