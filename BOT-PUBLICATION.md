@@ -2,26 +2,52 @@
 
 Ce bot prépare des brouillons destinés aux entreprises, CFA, organismes de formation, référents handicap et acteurs de l'insertion.
 
-## Principe
+## 1. Génération des brouillons
 
-Le bot ne publie jamais directement vers LinkedIn ni vers une autre plateforme externe. Il génère des brouillons dans `content/drafts/` afin qu'une validation humaine soit faite avant toute publication.
+Le workflow GitHub Actions **Bot éditorial - brouillons** génère des fichiers dans `content/drafts/`.
 
-## Fonctionnement
-
-Le workflow GitHub Actions `Bot éditorial - brouillons` peut être lancé manuellement depuis l'onglet **Actions** avec deux paramètres :
+Il peut être lancé manuellement avec :
 
 - `topic` : sujet du post ;
 - `audience` : entreprises, formation, insertion ou général.
 
-Il fonctionne aussi automatiquement le lundi, le mercredi et le vendredi :
+Il fonctionne aussi automatiquement :
 
 - lundi : entreprises / recrutement inclusif ;
 - mercredi : CFA et organismes de formation / IA inclusive ;
 - vendredi : structures pilotes / Work-Test-Démo.
 
-## Identité éditoriale commune
+## 2. Validation humaine obligatoire
 
-Tous les brouillons rappellent :
+Aucun brouillon n'est publié automatiquement.
+
+Pour publier un texte validé :
+
+1. ouvrir l'onglet **Actions** du dépôt ;
+2. choisir **Valider et publier un brouillon** ;
+3. cliquer sur **Run workflow** ;
+4. saisir le chemin exact du fichier sous `content/drafts/` ;
+5. choisir **PUBLIER** dans le champ de confirmation ;
+6. lancer le workflow.
+
+Si la confirmation reste sur **ANNULER**, rien n'est publié.
+
+## 3. Ce que fait le bouton de publication
+
+Le script `scripts/publish_draft.py` :
+
+- vérifie que le fichier est bien un `.md` directement présent dans `content/drafts/` ;
+- vérifie que son statut est `draft` ;
+- transforme le contenu validé en page HTML accessible ;
+- ajoute des métadonnées SEO ;
+- ajoute des données structurées Schema.org de type `Article` avec Patrick Billy comme auteur et Élan pour Tous comme éditeur ;
+- crée la page dans `pages/publications/` ;
+- archive le brouillon source dans `content/published/` avec le statut `published` ;
+- supprime le brouillon de `content/drafts/` afin d'éviter une double publication.
+
+## 4. Identité éditoriale commune
+
+Les contenus rappellent de manière cohérente :
 
 - Patrick Billy ;
 - Élan pour Tous ;
@@ -32,8 +58,6 @@ Tous les brouillons rappellent :
 - recrutement par les compétences ;
 - contact : `elanpourtous49@gmail.com`.
 
-## Validation
+## 5. Réseaux sociaux
 
-Chaque fichier généré porte le statut `draft` et la mention : « Brouillon généré automatiquement. Validation humaine obligatoire avant publication. »
-
-Cette première version est volontairement prudente. Une deuxième étape pourra ajouter un bouton de publication vers le site officiel après validation, puis une connexion à une API officielle de réseau social si elle est disponible et autorisée.
+Cette version ne publie pas directement sur LinkedIn ni sur une autre plateforme externe. Une connexion future ne devra utiliser qu'une API officielle et conserver une validation humaine avant diffusion.
