@@ -1,0 +1,81 @@
+name: Bot éditorial - brouillons
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: "Sujet du brouillon"
+        required: true
+        default: "Recrutement inclusif et mise en situation réelle"
+      audience:
+        description: "Public cible"
+        required: true
+        type: choice
+        options:
+          - entreprises
+          - formation
+          - insertion
+          - general
+  schedule:
+    - cron: "0 7 * * 1"
+    - cron: "0 7 * * 3"
+    - cron: "0 7 * * 5"
+
+permissions:
+  contents: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Choisir le sujet automatique
+        id: auto
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            DOW=$(date -u +%u)
+            case "$DOW" in
+              1)
+                echo "topic=Tester les compétences avant de juger le CV" >> "$GITHUB_OUTPUT"
+                echo "audience=entreprises" >> "$GITHUB_OUTPUT"
+                ;;
+              3)
+                echo "topic=IA inclusive pour faciliter la formation et la prise de notes" >> "$GITHUB_OUTPUT"
+                echo "audience=formation" >> "$GITHUB_OUTPUT"
+                ;;
+              *)
+                echo "topic=Work-Test-Démo : appel aux structures pilotes" >> "$GITHUB_OUTPUT"
+                echo "audience=insertion" >> "$GITHUB_OUTPUT"
+                ;;
+            esac
+          else
+            echo "topic=${{ inputs.topic }}" >> "$GITHUB_OUTPUT"
+            echo "audience=${{ inputs.audience }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Générer un brouillon
+        run: |
+          python scripts/editorial_bot.py \
+            --topic "${{ steps.auto.outputs.topic }}" \
+            --audience "${{ steps.auto.outputs.audience }}"
+
+      - name: Enregistrer le brouillon dans GitHub
+        shell: bash
+        run: |
+          git config user.name "elan-pour-tous-editorial-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/drafts/
+          if git diff --cached --quiet; then
+            echo "Aucun nouveau brouillon."
+            exit 0
+          fi
+          git commit -m "Bot éditorial : ajoute un brouillon à valider"
+          git push
