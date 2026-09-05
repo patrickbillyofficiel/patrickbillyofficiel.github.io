@@ -1,0 +1,51 @@
+name: Valider et publier un brouillon
+
+on:
+  workflow_dispatch:
+    inputs:
+      draft_path:
+        description: "Chemin exact sous content/drafts/"
+        required: true
+        type: string
+      confirmation:
+        description: "Choisir PUBLIER pour confirmer"
+        required: true
+        type: choice
+        options:
+          - ANNULER
+          - PUBLIER
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: ${{ inputs.confirmation == 'PUBLIER' }}
+    runs-on: ubuntu-latest
+    env:
+      APPROVED_DRAFT: ${{ inputs.draft_path }}
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Configurer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Publier uniquement le brouillon validé
+        run: python scripts/publish_draft.py --draft "$APPROVED_DRAFT"
+
+      - name: Enregistrer la publication
+        run: |
+          git config user.name "elan-pour-tous-editorial-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add pages/publications content/published content/drafts
+          git diff --cached --quiet && exit 1 || true
+          git commit -m "Publication validée : mise en ligne d'un brouillon"
+          git push
+
+      - name: Résumé
+        run: |
+          echo "### Publication effectuée" >> "$GITHUB_STEP_SUMMARY"
+          echo "Page créée dans pages/publications/ et brouillon archivé dans content/published/." >> "$GITHUB_STEP_SUMMARY"
