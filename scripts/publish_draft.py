@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Publie un brouillon validé sous forme de page HTML statique accessible.
 
-Le script n'accepte que des fichiers présents dans content/drafts/ et ne publie
-rien vers une plateforme externe.
+Le script n'accepte que des fichiers présents dans content/drafts/, met à jour
+l'index Ressources et ne publie rien vers une plateforme externe.
 """
 
 from __future__ import annotations
@@ -16,6 +16,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DRAFTS = (ROOT / "content" / "drafts").resolve()
 PUBLICATIONS = ROOT / "pages" / "publications"
+BLOG = ROOT / "pages" / "blog.html"
+START_MARKER = "<!-- AUTO-PUBLICATIONS-START -->"
+END_MARKER = "<!-- AUTO-PUBLICATIONS-END -->"
 
 
 def parse_front_matter(text: str) -> tuple[dict[str, str], str]:
@@ -135,6 +138,39 @@ def build_page(meta: dict[str, str], body_html: str) -> tuple[str, str]:
     return slug, page
 
 
+def update_blog_index(meta: dict[str, str], slug: str) -> None:
+    if not BLOG.exists():
+        raise SystemExit("Page Ressources introuvable.")
+
+    text = BLOG.read_text(encoding="utf-8")
+    if START_MARKER not in text or END_MARKER not in text:
+        raise SystemExit("Marqueurs d'indexation absents de pages/blog.html.")
+
+    title = html.escape(meta.get("title", "Publication Élan pour Tous"))
+    date = html.escape(meta.get("date", ""))
+    audience = html.escape(meta.get("audience", "general"))
+    card = (
+        f'<article class="inner-card" data-publication-slug="{html.escape(slug)}">'
+        f'<p class="inner-tag">{audience}</p>'
+        f'<h3>{title}</h3>'
+        f'<p>Publication validée le {date} par Patrick Billy — Élan pour Tous.</p>'
+        f'<a class="inner-card-link" href="./publications/{html.escape(slug)}.html">Lire la publication</a>'
+        '</article>'
+    )
+
+    before, rest = text.split(START_MARKER, 1)
+    current, after = rest.split(END_MARKER, 1)
+    current = current.strip()
+    placeholder = "Aucune publication validée pour le moment"
+    if placeholder in current:
+        current = ""
+    if f'data-publication-slug="{slug}"' not in current:
+        current = card + ("\n" + current if current else "")
+
+    updated = f"{before}{START_MARKER}\n{current}\n{END_MARKER}{after}"
+    BLOG.write_text(updated, encoding="utf-8")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--draft", required=True, help="Chemin sous content/drafts/")
@@ -156,6 +192,7 @@ def main() -> None:
     if output.exists():
         raise SystemExit(f"Publication déjà existante : {output.relative_to(ROOT)}")
     output.write_text(page, encoding="utf-8")
+    update_blog_index(meta, slug)
 
     published_dir = ROOT / "content" / "published"
     published_dir.mkdir(parents=True, exist_ok=True)
