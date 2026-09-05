@@ -36,16 +36,19 @@ jobs:
       - name: Publier uniquement le brouillon validé
         run: python scripts/publish_draft.py --draft "$APPROVED_DRAFT"
 
+      - name: Mettre à jour sitemap et RSS
+        run: python scripts/generate_discovery_feeds.py
+
       - name: Enregistrer la publication
         run: |
           git config user.name "elan-pour-tous-editorial-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add pages/publications pages/blog.html content/published content/drafts
+          git add pages/publications pages/blog.html content/published content/drafts sitemap.xml rss.xml
           git diff --cached --quiet && exit 1 || true
-          git commit -m "Publication validée : mise en ligne d'un brouillon"
+          git commit -m "Publication validée : mise en ligne et flux de découverte"
           git push
 
       - name: Résumé
         run: |
           echo "### Publication effectuée" >> "$GITHUB_STEP_SUMMARY"
-          echo "Page créée dans pages/publications/, ajoutée à la page Ressources et brouillon archivé dans content/published/." >> "$GITHUB_STEP_SUMMARY"
+          echo "Page créée, ajoutée à Ressources, archivée et intégrée au sitemap et au flux RSS sans service Google." >> "$GITHUB_STEP_SUMMARY"
