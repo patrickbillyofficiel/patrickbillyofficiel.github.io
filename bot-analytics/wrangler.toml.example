@@ -1,0 +1,14 @@
+name = "elan-analytics-bot"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "elan-analytics"
+database_id = "REMPLACER_PAR_ID_D1"
+
+[vars]
+ALLOWED_ORIGINS = "https://patrickbillyofficiel.github.io"
+
+# Ne mets jamais DASHBOARD_TOKEN ici dans un dépôt public.
+# Ajoute-le comme secret Cloudflare Worker : wrangler secret put DASHBOARD_TOKEN
