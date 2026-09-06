@@ -1,0 +1,16 @@
+{
+  "name": "elan-analytics-bot",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Bot de veille IA Inclusive - analytics respectueux de la vie privee",
+  "scripts": {
+    "login": "wrangler login",
+    "db:create": "wrangler d1 create elan-analytics --location=weur",
+    "db:init": "wrangler d1 execute elan-analytics --file=./schema.sql --remote",
+    "secret": "wrangler secret put DASHBOARD_TOKEN",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "latest"
+  }
+}
