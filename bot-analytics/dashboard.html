@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tableau de bord — IA Inclusive</title>
+  <style>
+    body{font-family:system-ui,sans-serif;max-width:1000px;margin:0 auto;padding:24px;line-height:1.5}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:20px 0}
+    .card{border:1px solid #ccc;border-radius:12px;padding:16px}.value{font-size:2rem;font-weight:700}
+    table{width:100%;border-collapse:collapse;margin:16px 0}th,td{border-bottom:1px solid #ddd;padding:10px;text-align:left}
+    input,button,select{font:inherit;padding:9px}button{cursor:pointer}.muted{opacity:.75}.error{font-weight:700}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Bot de veille IA Inclusive</h1>
+    <p class="muted">Statistiques sans cookies, sans stockage d’adresse IP et sans profilage nominatif.</p>
+    <section aria-labelledby="connexion">
+      <h2 id="connexion">Connexion</h2>
+      <label>Adresse du Worker <input id="endpoint" type="url" placeholder="https://...workers.dev" size="38"></label>
+      <label>Clé privée <input id="token" type="password" autocomplete="off"></label>
+      <label>Période <select id="days"><option>7</option><option>30</option><option>90</option></select> jours</label>
+      <button id="load">Afficher</button>
+      <p id="status" role="status"></p>
+    </section>
+
+    <section id="content" hidden>
+      <div class="grid">
+        <article class="card"><div>Événements</div><div class="value" id="total">0</div></article>
+        <article class="card"><div>Pages vues</div><div class="value" id="views">0</div></article>
+        <article class="card"><div>Clics contact</div><div class="value" id="contacts">0</div></article>
+        <article class="card"><div>Demandes devis</div><div class="value" id="quotes">0</div></article>
+        <article class="card"><div>Téléchargements</div><div class="value" id="downloads">0</div></article>
+      </div>
+
+      <h2>Pages les plus consultées</h2>
+      <table><thead><tr><th>Page</th><th>Vues</th></tr></thead><tbody id="pages"></tbody></table>
+
+      <h2>Signaux professionnels récents</h2>
+      <table><thead><tr><th>Date</th><th>Type</th><th>Page</th><th>Action</th><th>Provenance</th></tr></thead><tbody id="signals"></tbody></table>
+    </section>
+  </main>
+<script>
+const $=id=>document.getElementById(id);
+$('endpoint').value=sessionStorage.getItem('elan_endpoint')||'';
+$('token').value=sessionStorage.getItem('elan_token')||'';
+function td(v){const e=document.createElement('td');e.textContent=v??'';return e}
+$('load').addEventListener('click',async()=>{
+  const endpoint=$('endpoint').value.trim().replace(/\/$/,'');
+  const token=$('token').value;
+  const days=$('days').value;
+  $('status').textContent='Chargement…';
+  try{
+    const r=await fetch(`${endpoint}/stats?days=${encodeURIComponent(days)}`,{headers:{Authorization:`Bearer ${token}`}});
+    if(!r.ok) throw new Error(`Erreur ${r.status}`);
+    const d=await r.json();
+    sessionStorage.setItem('elan_endpoint',endpoint);sessionStorage.setItem('elan_token',token);
+    $('total').textContent=d.totals.total||0;$('views').textContent=d.totals.pageviews||0;
+    $('contacts').textContent=d.totals.contacts||0;$('quotes').textContent=d.totals.quotes||0;$('downloads').textContent=d.totals.downloads||0;
+    $('pages').replaceChildren(...(d.pages||[]).map(x=>{const tr=document.createElement('tr');tr.append(td(x.path),td(x.views));return tr}));
+    $('signals').replaceChildren(...(d.signals||[]).map(x=>{const tr=document.createElement('tr');[x.created_at,x.event_type,x.path,x.event_name,x.referrer_host].forEach(v=>tr.append(td(v)));return tr}));
+    $('content').hidden=false;$('status').textContent=`Données des ${d.days} derniers jours.`;
+  }catch(e){$('status').textContent=`Impossible de charger : ${e.message}`;$('content').hidden=true}
+});
+</script>
+</body>
+</html>
